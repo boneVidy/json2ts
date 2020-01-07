@@ -24,8 +24,7 @@ class Json2TsForm {
             if (this.listener != null) {
                 this.listener!!.onClicked(
                     if (fileName != null) fileName!!.text else "response",
-                    if (editor != null) editor!!.text else "",
-                    finalFields != null && finalFields!!.isSelected
+                    if (editor != null) editor!!.text else ""
                 )
             }
         }
@@ -176,7 +175,7 @@ class Json2TsForm {
     }
 
     interface OnGenerateClicked {
-        fun onClicked(fileName: String, json: String, finalFields: Boolean?)
+        fun onClicked(fileName: String, json: String)
     }
 
 }
