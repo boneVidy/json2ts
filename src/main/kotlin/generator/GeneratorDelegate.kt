@@ -24,7 +24,7 @@ class GeneratorDelegate(
                 override fun run(indicator: ProgressIndicator) {
                     try {
                         val generator = TsFileGenerator()
-                        generator.generateFromJson(json,fileName)
+                        generator.generateFromJson(json,"${event.getData(CommonDataKeys.VIRTUAL_FILE)?.path}")
                         messageDelegate.showMessage("Ts interface has been generated")
                     } catch (e: Throwable) {
                         when(e) {
