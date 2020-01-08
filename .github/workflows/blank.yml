@@ -37,6 +37,6 @@ jobs:
       - name: Upload plugin
         uses: actions/upload-artifact@v1
         with:
-          name: app
+          name: json2ts
           path: build/distributions/com.jsonts.kotlin-1.0.2-SNAPSHOT.zip
 #           pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
