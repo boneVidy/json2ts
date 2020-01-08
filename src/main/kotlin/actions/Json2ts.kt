@@ -17,7 +17,7 @@ class Json2ts : AnAction() {
                 setOnGenerateListener(object : OnGenerateClicked {
                     override fun onClicked(fileName: String, json: String) {
                         window.dispose()
-                        generatorDelegate.runGeneration(event, fileName, json )
+                        generatorDelegate.runGeneration(event, json )
                     }
                 })
             }
