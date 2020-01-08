@@ -175,7 +175,7 @@ class Json2TsForm {
     }
 
     interface OnGenerateClicked {
-        fun onClicked(fileName: String, json: String)
+        fun onClicked(rootName: String, json: String)
     }
 
 }
