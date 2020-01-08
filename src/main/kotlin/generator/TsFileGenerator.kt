@@ -25,10 +25,10 @@ class TsFileGenerator {
         }
 
     }
-    fun generateFromJsonByDocument(json: String, event: AnActionEvent) {
+    fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?) {
         val document = event.getData(CommonDataKeys.EDITOR)?.document
         val project = event.getData(CommonDataKeys.PROJECT)
-        val tsCode = toTypescript(json)
+        val tsCode = toTypescript(json, rootName!!)
         WriteCommandAction.runWriteCommandAction(project) {
             document?.apply {
                 insertString(textLength, tsCode)

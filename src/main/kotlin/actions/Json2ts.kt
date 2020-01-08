@@ -15,9 +15,9 @@ class Json2ts : AnAction() {
         DialogBuilder().apply {
             val form = Json2TsForm().apply {
                 setOnGenerateListener(object : OnGenerateClicked {
-                    override fun onClicked(fileName: String, json: String) {
+                    override fun onClicked(rootName: String, json: String) {
                         window.dispose()
-                        generatorDelegate.runGeneration(event, json )
+                        generatorDelegate.runGeneration(event, json, rootName)
                     }
                 })
             }
