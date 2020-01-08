@@ -1,11 +1,11 @@
 <idea-plugin>
-    <id>com.jsonts.kotlin.com.jsonts.kotlin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.jsonts.kotlin</id>
+    <name>json2ts</name>
+    <vendor email="vidy3587@gmail.com" url="https://github.com/boneVidy">boneVidy</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    convert json to ts<br>
+    <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -13,6 +13,9 @@
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
+<!--    <depends>JavaScript</depends>-->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
