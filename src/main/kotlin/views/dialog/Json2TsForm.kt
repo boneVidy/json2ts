@@ -3,6 +3,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants
 import org.fife.ui.rsyntaxtextarea.Theme
+import parser.ParseType
 
 import javax.swing.*
 import java.awt.*
@@ -12,21 +13,20 @@ class Json2TsForm {
     var rootView: JPanel? = null
     var editor: RSyntaxTextArea? = null
     var generateButton: JButton?=null
-    var finalFields: JCheckBox? = null
-    var fileName: JTextField? = null
+    var rootObjectName: JTextField? = null
     var fileNameLabel: JLabel? = null
-
+    var typeRadio: JRadioButton? = null
+    var interfaceRadio: JRadioButton? = null
     private var listener: OnGenerateClicked? = null
 
     fun setOnGenerateListener(listener: OnGenerateClicked) {
         this.listener = listener
         generateButton!!.addActionListener {
-            if (this.listener != null) {
-                this.listener!!.onClicked(
-                    if (fileName != null) fileName!!.text else "response",
-                    if (editor != null) editor!!.text else ""
-                )
-            }
+            this.listener?.onClicked(
+                if (rootObjectName != null) rootObjectName!!.text else "RootObject",
+                if (editor != null) editor!!.text else "",
+                if (typeRadio!=null && typeRadio!!.isSelected() ) ParseType.TypeStruct else ParseType.InterfaceStruct
+            )
         }
     }
 
@@ -106,29 +106,10 @@ class Json2TsForm {
                 false
             )
         )
-        finalFields = JCheckBox()
-        finalFields!!.text = "Make fields final"
+
+        rootObjectName = JTextField()
         rootView!!.add(
-            finalFields!!,
-            GridConstraints(
-                1,
-                0,
-                1,
-                1,
-                GridConstraints.ANCHOR_WEST,
-                GridConstraints.FILL_NONE,
-                GridConstraints.SIZEPOLICY_CAN_SHRINK or GridConstraints.SIZEPOLICY_CAN_GROW,
-                GridConstraints.SIZEPOLICY_FIXED,
-                null,
-                null,
-                null,
-                0,
-                false
-            )
-        )
-        fileName = JTextField()
-        rootView!!.add(
-            fileName!!,
+            rootObjectName!!,
             GridConstraints(
                 1,
                 2,
@@ -146,7 +127,7 @@ class Json2TsForm {
             )
         )
         fileNameLabel = JLabel()
-        fileNameLabel!!.text = "Root file name:"
+        fileNameLabel!!.text = "Root object name:"
         rootView!!.add(
             fileNameLabel,
             GridConstraints(
@@ -175,7 +156,7 @@ class Json2TsForm {
     }
 
     interface OnGenerateClicked {
-        fun onClicked(rootName: String, json: String)
+        fun onClicked(rootName: String, json: String, parseType: ParseType)
     }
 
 }

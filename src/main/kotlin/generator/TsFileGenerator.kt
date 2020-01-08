@@ -3,6 +3,7 @@ package generator
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
+import parser.ParseType
 import parser.toTypescript
 import java.io.BufferedWriter
 import java.io.File
@@ -25,10 +26,10 @@ class TsFileGenerator {
         }
 
     }
-    fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?) {
+    fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
         val document = event.getData(CommonDataKeys.EDITOR)?.document
         val project = event.getData(CommonDataKeys.PROJECT)
-        val tsCode = toTypescript(json, rootName!!)
+        val tsCode = toTypescript(json, rootName!!, parseType)
         WriteCommandAction.runWriteCommandAction(project) {
             document?.apply {
                 insertString(textLength, tsCode)

@@ -4,7 +4,7 @@ import com.google.gson.*
 import exceptions.SyntaxException
 
 
-fun toTypescript(jsonString: String, objectName: String = "RootObject"): String {
+fun toTypescript(jsonString: String, objectName: String = "RootObject", parseType: ParseType = ParseType.InterfaceStruct): String {
     val jsonContent = try {
         parserFromJsonString(jsonString)
     } catch (e: Exception) {
@@ -14,9 +14,9 @@ fun toTypescript(jsonString: String, objectName: String = "RootObject"): String 
         return "null"
     }
     if (jsonContent.isJsonArray) {
-        return toTsStruct(jsonContent.asJsonArray[0], objectName)
+        return toTsStruct(jsonContent.asJsonArray[0], objectName, parseType )
     }
-    return toTsStruct(jsonContent, objectName)
+    return toTsStruct(jsonContent, objectName, parseType)
 }
 
 private fun parserFromJsonString(src: String): JsonElement? {
@@ -31,7 +31,7 @@ private fun upcateFirstChar(key: String): String {
 private fun lowcaseFirstChar(key: String): String {
     return key[0].toLowerCase() + key.substring(1, key.length)
 }
-private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObject"):String {
+private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObject", parseType: ParseType ):String {
     val optionalKeys = mutableListOf<String>()
     val objectResult = mutableListOf<String>()
     val json = jsonElement.asJsonObject
@@ -43,7 +43,7 @@ private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObjec
         if (value.isJsonObject && !value.isJsonArray) {
 
             val childObjectName = upcateFirstChar(key)
-            objectResult.add(toTsStruct(value, childObjectName))
+            objectResult.add(toTsStruct(value, childObjectName, parseType))
             json.addProperty(key, "$childObjectName;")
         } else if (value.isJsonArray) {
             val valueArr = value.asJsonArray
@@ -59,7 +59,7 @@ private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObjec
 
             } else if (valueArr.size() > 0 && valueArr[0].isJsonObject) {
                 val childObjectName = upcateFirstChar(key)
-                objectResult.add(toTsStruct(valueArr[0],childObjectName))
+                objectResult.add(toTsStruct(valueArr[0],childObjectName, parseType))
                 json.addProperty(key,removeMajority(childObjectName)+"[];")
             } else {
                 json.addProperty(key, arrayTypes[0])
@@ -78,7 +78,7 @@ private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObjec
             optionalKeys.add(key)
         }
     }
-    val result = formatCharsToTypeScript(json, objectName, optionalKeys)
+    val result = formatCharsToTypeScript(json, objectName, optionalKeys, parseType)
     objectResult.add(result)
     return objectResult.joinToString("\n\n")
 }
@@ -158,7 +158,7 @@ private fun removeMajority(objectName: String): String{
     }
     return objectName
 }
-private fun formatCharsToTypeScript(jsonContent: JsonObject, objectName: String, optionalKeys: List<String>): String {
+private fun formatCharsToTypeScript(jsonContent: JsonObject, objectName: String, optionalKeys: List<String>, parseType: ParseType): String {
     val reg = Regex("\"")
     var result = Gson()
         .newBuilder()
@@ -178,6 +178,10 @@ private fun formatCharsToTypeScript(jsonContent: JsonObject, objectName: String,
         }
     }
     val newObjectName = removeMajority(objectName)
+    if (parseType == ParseType.TypeStruct) {
+        return "export type $newObjectName = $result"
+    }
     return "export interface $newObjectName $result"
+
 }
 
