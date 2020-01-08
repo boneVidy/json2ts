@@ -39,4 +39,4 @@ jobs:
         with:
           name: app
           path: build/distributions/com.jsonts.kotlin.zip
-          pattern: build/distributions/com.jsonts.kotlin-**-SNAPSHOT.zip
+          pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
