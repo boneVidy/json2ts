@@ -6,6 +6,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.DialogBuilder
 import generator.GeneratorDelegate
+import parser.ParseType
 
 
 class Json2ts : AnAction() {
@@ -15,9 +16,9 @@ class Json2ts : AnAction() {
         DialogBuilder().apply {
             val form = Json2TsForm().apply {
                 setOnGenerateListener(object : OnGenerateClicked {
-                    override fun onClicked(rootName: String, json: String) {
+                    override fun onClicked(rootName: String, json: String, parseType: ParseType) {
                         window.dispose()
-                        generatorDelegate.runGeneration(event, json, rootName)
+                        generatorDelegate.runGeneration(event, json, rootName, parseType)
                     }
                 })
             }
