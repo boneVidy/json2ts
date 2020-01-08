@@ -38,5 +38,5 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: build/distributions/com.jsonts.kotlin.zip
-          pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
+          path: build/distributions/com.jsonts.kotlin-1.0.2-SNAPSHOT.zip
+#           pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
