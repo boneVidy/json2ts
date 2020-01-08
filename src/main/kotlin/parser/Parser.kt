@@ -172,7 +172,7 @@ private fun formatCharsToTypeScript(jsonContent: JsonObject, objectName: String,
     for (item in entrySets) {
         val key = item.key
         if (optionalKeys.contains(key)) {
-            result = result.replace(Regex("$key:"), lowcaseFirstChar("$key:?"))
+            result = result.replace(Regex("$key:"), lowcaseFirstChar("$key?:"))
         } else {
             result = result.replace(Regex("$key:"), lowcaseFirstChar("$key:"))
         }
