@@ -22,7 +22,7 @@ jobs:
 #       - name: Unit tests
 #         run: bash ./gradlew test --stacktrace
 
-  apk:
+  plugin:
     name: Generate plugin
     runs-on: ubuntu-18.04
 
@@ -40,3 +40,12 @@ jobs:
           name: json2ts
           path: build/distributions/com.jsonts.kotlin-1.0.2-SNAPSHOT.zip
 #           pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
+      - name: Zip Release
+        uses: TheDoctor0/zip-release@v0.2.1
+        with:
+          # Filename for archive
+          filename: json2ts
+          # Base path for archive files
+          path:  build/distributions/com.jsonts.kotlin-1.0.2-SNAPSHOT.zip
+          # List of excluded files/directories
+#           exclusions: # optional, default is 
