@@ -14,7 +14,7 @@ class GeneratorDelegate(
     private val messageDelegate: MessageDelegate = MessageDelegate()
 ) {
 
-    fun runGeneration(event: AnActionEvent, json: String, rootName:String, parseType: ParseType) {
+    fun runGeneration(event: AnActionEvent, json: String, rootName:String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(
             object : Task.Backgroundable(
                 event.project, "ts code is generating....", false
@@ -22,7 +22,7 @@ class GeneratorDelegate(
                 override fun run(indicator: ProgressIndicator) {
                     try {
                         val generator = TsFileGenerator()
-                        generator.generateFromJsonByDocument(json,event, rootName?:"RootObject", parseType)
+                        generator.generateFromJsonByDocument(json,event, rootName, parseType)
                         messageDelegate.showMessage("Ts interface has been generated")
                     } catch (e: Throwable) {
                         when(e) {
