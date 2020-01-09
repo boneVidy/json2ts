@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.jsonts.kotlin'
-version '1.0.3-SNAPSHOT'
+version '1.0.4-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -23,6 +23,7 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2019.3.1'
+    updateSinceUntilBuild false
     sandboxDirectory = project.rootDir.canonicalPath + "/.sandbox" 
 }
 compileKotlin {
