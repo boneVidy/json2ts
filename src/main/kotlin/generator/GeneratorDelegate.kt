@@ -1,16 +1,13 @@
 package generator
 
-import parser.toTypescript
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.LangDataKeys
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
 import exceptions.FileIOException
 import parser.ParseType
-import java.io.File
 import java.io.IOException
 
 class GeneratorDelegate(
@@ -25,7 +22,7 @@ class GeneratorDelegate(
                 override fun run(indicator: ProgressIndicator) {
                     try {
                         val generator = TsFileGenerator()
-                        generator.generateFromJsonByDocument(json,event, rootName, parseType)
+                        generator.generateFromJsonByDocument(json,event, rootName?:"RootObject", parseType)
                         messageDelegate.showMessage("Ts interface has been generated")
                     } catch (e: Throwable) {
                         when(e) {

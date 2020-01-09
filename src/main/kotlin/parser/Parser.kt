@@ -18,9 +18,9 @@ fun toTypescript(
         return "null"
     }
     if (jsonContent.isJsonArray) {
-        return toTsStruct(jsonContent.asJsonArray[0], objectName, parseType)
+        return toTsStruct(jsonContent.asJsonArray[0], parseType, objectName)
     }
-    return toTsStruct(jsonContent, objectName, parseType)
+    return toTsStruct(jsonContent, parseType, objectName)
 }
 
 private fun parserFromJsonString(src: String): JsonElement? = JsonParser().parse(src).asJsonObject
@@ -29,7 +29,12 @@ private fun upcaseFirstChar(key: String): String = key[0].toUpperCase() + key.su
 
 private fun lowcaseFirstChar(key: String): String = key[0].toLowerCase() + key.substring(1, key.length)
 
-private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObject", parseType: ParseType): String {
+private fun toTsStruct(
+    jsonElement: JsonElement,
+    parseType: ParseType,
+    objectName: String = "RootObject",
+    structResult: MutableList<String> = mutableListOf()
+): String {
     val optionalKeys = mutableListOf<String>()
     val objectResult = mutableListOf<String>()
     val json = jsonElement.asJsonObject
@@ -39,9 +44,17 @@ private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObjec
         val value = o.value
         val key = o.key
         if (value.isJsonObject && !value.isJsonArray) {
-
             val childObjectName = upcaseFirstChar(key)
-            objectResult.add(toTsStruct(value, childObjectName, parseType))
+            val typeString = toTsStruct(
+                jsonElement = value,
+                parseType = parseType,
+                objectName = childObjectName,
+                structResult = structResult
+            )
+            if (!structResult.contains(typeString)) {
+                objectResult.add(typeString)
+                structResult.add(typeString)
+            }
             json.addProperty(key, "$childObjectName;")
         } else if (value.isJsonArray) {
             val valueArr = value.asJsonArray
@@ -57,7 +70,7 @@ private fun toTsStruct(jsonElement: JsonElement, objectName: String = "RootObjec
 
             } else if (valueArr.size() > 0 && valueArr[0].isJsonObject) {
                 val childObjectName = upcaseFirstChar(key)
-                objectResult.add(toTsStruct(valueArr[0], childObjectName, parseType))
+                objectResult.add(toTsStruct(valueArr[0], parseType, childObjectName, structResult))
                 json.addProperty(key, removeMajority(childObjectName) + "[];")
             } else {
                 json.addProperty(key, arrayTypes[0])
