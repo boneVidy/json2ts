@@ -39,8 +39,8 @@ jobs:
         with:
           name: json2ts
           path: build/distributions/com.jsonts.kotlin-1.0.3-SNAPSHOT.zip
-      - name: GitHub Releases
-        uses: fnkr/github-action-ghr@v1.2  
+#      - name: GitHub Releases
+#        uses: fnkr/github-action-ghr@v1.2
 #           pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
 #       - name: Zip Release
 #         uses: TheDoctor0/zip-release@v0.2.1
