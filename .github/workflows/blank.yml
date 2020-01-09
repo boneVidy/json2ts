@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: json2ts
-          path: build/distributions/com.jsonts.kotlin-1.0.3-SNAPSHOT.zip
+          path: build/distributions/com.jsonts.kotlin-1.0.4-SNAPSHOT.zip
 #      - name: GitHub Releases
 #        uses: fnkr/github-action-ghr@v1.2
 #           pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
