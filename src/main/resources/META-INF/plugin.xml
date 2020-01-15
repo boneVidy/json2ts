@@ -2,10 +2,16 @@
     <id>com.jsonts.kotlin</id>
     <name>json2ts</name>
     <vendor email="vidy3587@gmail.com" url="https://github.com/boneVidy">boneVidy</vendor>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <description><![CDATA[
     convert json to ts<br>
     <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
+    <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/screen.gif"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/screen.gif" alt="image" style="max-width:100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step1.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step1.png" alt="image" style="max-width:100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step2.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step2.png" alt="image" style="max-width:100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step3.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step3.png" alt="image" style="max-width:100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step4.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step4.png" alt="image" style="max-width:100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step5.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step5.png" alt="image" style="max-width:100%;"></a></p>
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -13,7 +19,7 @@
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
-<!--    <depends>JavaScript</depends>-->
+    <!--    <depends>JavaScript</depends>-->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
 
