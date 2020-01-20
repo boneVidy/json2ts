@@ -4,6 +4,7 @@ import com.intellij.notification.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.ui.Messages
+//import com.intellij.openapi.ui.
 
 class MessageDelegate {
     companion object {
@@ -40,7 +41,8 @@ class MessageDelegate {
 
     private fun showMessage(message: String, header: String) {
         ApplicationManager.getApplication().invokeLater {
-            Messages.showDialog(message, header, arrayOf("OK"), -1, null)
+            Messages.showInfoMessage(message, header)
+//            Messages.showDialog(message, header, arrayOf("OK"), -1, null)
         }
     }
 }
