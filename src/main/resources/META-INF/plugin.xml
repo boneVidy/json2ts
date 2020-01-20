@@ -2,16 +2,17 @@
     <id>com.jsonts.kotlin</id>
     <name>json2ts</name>
     <vendor email="vidy3587@gmail.com" url="https://github.com/boneVidy">boneVidy</vendor>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <description><![CDATA[
     convert json to ts<br>
     <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
-    <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/screen.gif"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/screen.gif" alt="image" style="max-width:100%;"></a>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step1.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step1.png" alt="image" style="max-width:100%;"></a>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step2.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step2.png" alt="image" style="max-width:100%;"></a>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step3.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step3.png" alt="image" style="max-width:100%;"></a>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step4.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step4.png" alt="image" style="max-width:100%;"></a>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/boneVidy/json2ts/blob/master/docs/step5.png"><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step5.png" alt="image" style="max-width:100%;"></a></p>
+    <div>
+    <img src="https://github.com/boneVidy/json2ts/raw/master/docs/step1.webp" alt="image" style="max-width:400px;"></div>
+
+    <div><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step2.webp" alt="image" style="max-width:400px;"></div>
+    <div><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step3.webp" alt="image" style="max-width:400px;"></div>
+    <div><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step4.webp" alt="image" style="max-width:400px;"></div>
+    <div><img src="https://github.com/boneVidy/json2ts/raw/master/docs/step5.webp" alt="image" style="max-width:400px;"></div>
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -32,6 +33,9 @@
 
         <action id="Json2ts" class="actions.Json2ts" text="Json2ts" description="Json2ts">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+        <action id="actions.Json2tsFile" class="actions.Json2tsFile" text="Json2tsFile">
+            <add-to-group group-id="ProjectViewPopupMenu"  anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
