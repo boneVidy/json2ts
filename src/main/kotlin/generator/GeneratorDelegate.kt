@@ -38,4 +38,29 @@ class GeneratorDelegate(
             }
         )
     }
+
+    fun runGenerationToFile(event: AnActionEvent, json: String, rootName:String = "RootObject", parseType: ParseType) {
+        ProgressManager.getInstance().run(
+            object : Task.Backgroundable(
+                event.project, "ts code is generating....", false
+            ) {
+                override fun run(indicator: ProgressIndicator) {
+                    try {
+                        val generator = TsFileGenerator()
+                        generator.generateTsFile(json,event, rootName, parseType)
+                        messageDelegate.showMessage("Ts interface has been generated")
+                    } catch (e: Throwable) {
+                        when(e) {
+                            is IOException -> messageDelegate.onException(FileIOException())
+                            else -> messageDelegate.onException(e)
+                        }
+                    } finally {
+                        indicator.stop()
+                        ProjectView.getInstance(event.project).refresh()
+                        event.getData(LangDataKeys.VIRTUAL_FILE)?.refresh(false, true)
+                    }
+                }
+            }
+        )
+    }
 }
