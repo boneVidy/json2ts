@@ -3,30 +3,15 @@ package generator
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
+import com.intellij.openapi.fileEditor.FileEditorManager
+import com.intellij.openapi.vfs.VirtualFile
+
 
 import parser.ParseType
 import parser.toTypescript
-import java.io.BufferedWriter
-import java.io.File
-import java.io.FileWriter
+
 
 class TsFileGenerator {
-    fun generateFromJson(json: String, fileName: String) {
-        val tsCode = toTypescript(json)
-        val file = File(fileName)
-        if (!file.exists()) {
-            file.createNewFile()
-        }
-        val out = BufferedWriter(FileWriter(file, true))
-        try {
-            out.append("\n\n")
-            out.append(tsCode)
-            out.flush()
-        } finally {
-            out.close()
-        }
-
-    }
 
     fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
         val document = event.getData(CommonDataKeys.EDITOR)?.document
@@ -43,15 +28,20 @@ class TsFileGenerator {
 
     fun generateTsFile(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
         val virtualFile = event.getData(CommonDataKeys.VIRTUAL_FILE)
-        val project = event.getData(CommonDataKeys.PROJECT)
-        val editor = event.getData(CommonDataKeys.EDITOR)
+        val project = event.getData(CommonDataKeys.PROJECT) ?: return
         WriteCommandAction.runWriteCommandAction(project) {
-            val childFile = virtualFile?.createChildData(this, "${rootName}.d.ts")
+            val childFile: VirtualFile? = if (virtualFile?.isDirectory!!) {
+                virtualFile.createChildData(this, "${rootName}.d.ts")
+            } else {
+                virtualFile.parent.findOrCreateChildData(this, "${rootName}.d.ts")
+            }
             val tsCode = toTypescript(json, rootName!!, parseType)
             childFile?.apply {
                 setBinaryContent(tsCode.toByteArray())
                 refresh(true, true)
             }
+            val fileEditorManager = FileEditorManager.getInstance(project)
+            childFile?.let { fileEditorManager.openFile(it, true) }
         }
     }
 }
