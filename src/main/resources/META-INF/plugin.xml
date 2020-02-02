@@ -34,8 +34,8 @@
         <action id="Json2ts" class="actions.Json2ts" text="Json2ts" description="Json2ts">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <action id="actions.Json2tsFile" class="actions.Json2tsFile" text="Json2tsFile">
-            <add-to-group group-id="ProjectViewPopupMenu"  anchor="first"/>
+        <action id="actions.Json2tsFile" class="actions.Json2tsFile" text="Convert Json to Ts">
+            <add-to-group group-id="NewGroup"  anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
