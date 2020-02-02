@@ -31,9 +31,9 @@ class TsFileGenerator {
         val project = event.getData(CommonDataKeys.PROJECT) ?: return
         WriteCommandAction.runWriteCommandAction(project) {
             val childFile: VirtualFile? = if (virtualFile?.isDirectory!!) {
-                virtualFile.createChildData(this, "${rootName}.d.ts")
+                virtualFile.createChildData(this, "${rootName}.ts")
             } else {
-                virtualFile.parent.findOrCreateChildData(this, "${rootName}.d.ts")
+                virtualFile.parent.findOrCreateChildData(this, "${rootName}.ts")
             }
             val tsCode = toTypescript(json, rootName!!, parseType)
             childFile?.apply {
