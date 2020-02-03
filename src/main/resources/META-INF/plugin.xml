@@ -18,6 +18,9 @@
     <change-notes>
         <![CDATA[
     new feature<br>
+    <p>
+        support new group create ts file
+    </p>
     <div>
         <img src="https://github.com/boneVidy/json2ts/raw/master/docs/tsfile.png" alt="image" style="max-width:400px;"></div>
     </div>
