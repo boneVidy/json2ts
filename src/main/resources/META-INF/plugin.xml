@@ -18,10 +18,12 @@
 
     <change-notes>
         <![CDATA[
-    <p>support new group create ts file</p>
-    <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
-    <div>
-    <img src="https://github.com/boneVidy/json2ts/raw/master/docs/tsfile.png" alt="image" style="max-width:400px;"></div>
+        <div>
+        <p>support new group create ts file</p>
+        <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
+        <div>
+        <img src="https://github.com/boneVidy/json2ts/raw/master/docs/tsfile.png" alt="image" style="max-width:400px;"></div>
+    </div>
     ]]>
     </change-notes>
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -44,7 +46,7 @@
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
         <action id="actions.Json2tsFile" class="actions.Json2tsFile" text="Convert Json to Ts">
-            <add-to-group group-id="NewGroup"  anchor="first"/>
+            <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
