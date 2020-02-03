@@ -11,3 +11,5 @@ you can download the plugin in the plugin market
 ![image](https://github.com/boneVidy/json2ts/blob/master/docs/step3.webp)
 ![image](https://github.com/boneVidy/json2ts/blob/master/docs/step4.webp)
 ![image](https://github.com/boneVidy/json2ts/blob/master/docs/step5.webp)
+### create ts file
+![image](https://github.com/boneVidy/json2ts/blob/master/docs/tsfile.png)
