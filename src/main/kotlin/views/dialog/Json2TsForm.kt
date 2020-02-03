@@ -17,7 +17,7 @@ class Json2TsForm {
     var rootObjectName: JTextField? = null
     var fileNameLabel: JLabel? = null
     var typeRadio: JRadioButton? = null
-    var interfaceRadio: JRadioButton? = null
+//    var interfaceRadio: JRadioButton? = null
     private var listener: OnGenerateClicked? = null
 
     fun setOnGenerateListener(listener: OnGenerateClicked) {
