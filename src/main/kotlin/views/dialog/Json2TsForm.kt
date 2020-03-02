@@ -1,3 +1,4 @@
+import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
@@ -16,8 +17,7 @@ class Json2TsForm {
     var generateButton: JButton?=null
     var rootObjectName: JTextField? = null
     var fileNameLabel: JLabel? = null
-    var typeRadio: JRadioButton? = null
-//    var interfaceRadio: JRadioButton? = null
+    var typeRadio: JCheckBox? = null
     private var listener: OnGenerateClicked? = null
 
     fun setOnGenerateListener(listener: OnGenerateClicked) {
@@ -27,7 +27,7 @@ class Json2TsForm {
             this.listener?.onClicked(
                 if (rootObjectName != null) rootObjectName!!.text else "RootObject",
                 if (editor != null) editor!!.text else "",
-                if (typeRadio!=null && typeRadio!!.isSelected() ) ParseType.TypeStruct else ParseType.InterfaceStruct
+                if (typeRadio!=null && typeRadio!!.isSelected ) ParseType.TypeStruct else ParseType.InterfaceStruct
             )
         }
     }
