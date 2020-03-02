@@ -55,14 +55,6 @@
           <text value="type"/>
         </properties>
       </component>
-      <component id="8e1f1" class="javax.swing.JRadioButton" binding="interfaceRadio">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="interface"/>
-        </properties>
-      </component>
     </children>
   </grid>
   <buttonGroups>
