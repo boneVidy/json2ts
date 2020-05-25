@@ -1,7 +1,6 @@
 package parser
 
 import com.google.gson.*
-import exceptions.SyntaxException
 
 
 fun toTypescript(
@@ -9,21 +8,20 @@ fun toTypescript(
     objectName: String = "RootObject",
     parseType: ParseType = ParseType.InterfaceStruct
 ): String {
-    val jsonContent = try {
-        parserFromJsonString(jsonString)
-    } catch (e: Exception) {
-        throw SyntaxException()
+    val jsonElement = try {
+        JsonParser().parse(jsonString)
+    } catch (e: JsonSyntaxException) {
+        return e.message ?: "parser error";
     }
-    if (jsonContent == null) {
-        return "null"
+    if (jsonElement.isJsonArray) {
+        val typeStr = toTsStruct(jsonElement.asJsonArray[0], parseType, "RootDataItem");
+        return """$typeStr 
+export type ${objectName}s=RootDataItem[];
+"""
     }
-    if (jsonContent.isJsonArray) {
-        return toTsStruct(jsonContent.asJsonArray[0], parseType, objectName)
-    }
-    return toTsStruct(jsonContent, parseType, objectName)
+    return toTsStruct(jsonElement, parseType, objectName)
 }
 
-private fun parserFromJsonString(src: String): JsonElement? = JsonParser().parse(src).asJsonObject
 
 private fun upcaseFirstChar(key: String): String = key[0].toUpperCase() + key.substring(1, key.length)
 
@@ -65,7 +63,7 @@ private fun toTsStruct(
                     json.addProperty(key, arrayTypes[0].replace("[]", multiArrayBrackets))
 
                 } else {
-                    json.addProperty(key, "any" + multiArrayBrackets + ";")
+                    json.addProperty(key, "any$multiArrayBrackets;")
                 }
 
             } else if (valueArr.size() > 0 && valueArr[0].isJsonObject) {
@@ -94,10 +92,6 @@ private fun toTsStruct(
     return objectResult.joinToString("\n\n")
 }
 
-private fun toJsonEle(src: String): JsonElement {
-    return JsonParser().parse(src)
-}
-
 private fun isAllEquals(array: List<String>): Boolean {
     val fist = array[0];
     val list = array.slice(1..array.size)
@@ -114,7 +108,7 @@ private fun getMultiArrayBrackets(content: String): String {
     content.forEach { char ->
         run {
             if (char == '[') {
-                brackets = brackets + "[]"
+                brackets = "$brackets[]"
             }
         }
     }
@@ -205,3 +199,8 @@ private fun formatCharsToTypeScript(
 
 }
 
+// test
+//fun main() {
+//    val jsonArray = toTypescript("""{"name":111,"p" : [{"name":"vidy","age":34}]}""")
+//    print(jsonArray)
+//}
