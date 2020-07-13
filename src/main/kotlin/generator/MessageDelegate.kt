@@ -3,33 +3,32 @@ package generator
 import com.intellij.notification.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.ProjectManager
-import com.intellij.openapi.ui.Messages
-//import com.intellij.openapi.ui.
-
 class MessageDelegate {
     companion object {
-        private const val GROUP_LOG = "JSON2Ts_GENERATOR_LOG"
+        private const val GROUP_LOG = "json2ts logs"
+        private const val RESULT_INFO = "json2ts results"
     }
 
     private val logGroup =
-        NotificationGroup(GROUP_LOG, NotificationDisplayType.NONE, true)
+        NotificationGroup(GROUP_LOG, NotificationDisplayType.BALLOON, true)
+
+    private val resultNotification =
+        NotificationGroup(RESULT_INFO, NotificationDisplayType.BALLOON, true)
 
     fun onException(throwable: Throwable) {
-        val message = throwable.message ?: "Something went wrong"
+        val message =  if (throwable.message != null) {
+            "json2ts error: ${throwable.message}"
+        } else {
+            "json2ts error"
+        }
+
         sendNotification(
-            logGroup.createNotification(message , NotificationType.INFORMATION)
+            logGroup.createNotification(message , NotificationType.ERROR)
         )
-        showMessage(message, "Error")
     }
 
     fun showMessage(message: String) {
-        showMessage(message, "")
-    }
-
-    fun log(message: String) {
-        sendNotification(
-            logGroup.createNotification(message, NotificationType.INFORMATION)
-        )
+        sendNotification(resultNotification.createNotification(message, NotificationType.INFORMATION))
     }
 
     private fun sendNotification(notification: Notification) {
@@ -39,10 +38,4 @@ class MessageDelegate {
         }
     }
 
-    private fun showMessage(message: String, header: String) {
-        ApplicationManager.getApplication().invokeLater {
-            Messages.showInfoMessage(message, header)
-//            Messages.showDialog(message, header, arrayOf("OK"), -1, null)
-        }
-    }
 }
