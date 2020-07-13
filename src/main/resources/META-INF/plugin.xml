@@ -2,7 +2,7 @@
     <id>com.jsonts.kotlin</id>
     <name>json2ts</name>
     <vendor email="vidy3587@gmail.com" url="https://github.com/boneVidy">boneVidy</vendor>
-    <version>1.0.9</version>
+    <version>1.0.10</version>
     <description><![CDATA[
     convert json to ts<br>
     <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
