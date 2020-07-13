@@ -2,7 +2,6 @@ package parser
 
 import com.google.gson.*
 
-
 fun toTypescript(
     jsonString: String,
     objectName: String = "RootObject",
@@ -14,18 +13,35 @@ fun toTypescript(
         return e.message ?: "parser error";
     }
     if (jsonElement.isJsonArray) {
+        val firstEle = jsonElement.asJsonArray[0];
+        if (firstEle.isJsonPrimitive) {
+            val primitive = firstEle.asJsonPrimitive;
+            return toPrimitiveArray(primitive, objectName)
+        }
         val typeStr = toTsStruct(jsonElement.asJsonArray[0], parseType, "RootDataItem");
-        return """$typeStr 
-export type ${objectName}s=RootDataItem[];
+        return """$typeStr; 
+export type ${objectName}s = RootDataItem[];
 """
     }
     return toTsStruct(jsonElement, parseType, objectName)
 }
 
+private fun toPrimitiveArray (jsonPrimitive: JsonPrimitive,  name: String):String = when {
+    jsonPrimitive.isBoolean -> {
+        "export type $name = boolean[];";
+    }
+    jsonPrimitive.isString -> {
+        "export type $name = string[];";
+    }
+    jsonPrimitive.isNumber -> {
+        "export type $name = number[];";
+    }
+    else -> "export type $name = any[];";
+}
 
-private fun upcaseFirstChar(key: String): String = key[0].toUpperCase() + key.substring(1, key.length)
+private fun uppercaseFirstChar(key: String): String = key[0].toUpperCase() + key.substring(1, key.length)
 
-private fun lowcaseFirstChar(key: String): String = key[0].toLowerCase() + key.substring(1, key.length)
+private fun lowercaseFirstChar(key: String): String = key[0].toLowerCase() + key.substring(1, key.length)
 
 private fun toTsStruct(
     jsonElement: JsonElement,
@@ -35,14 +51,14 @@ private fun toTsStruct(
 ): String {
     val optionalKeys = mutableListOf<String>()
     val objectResult = mutableListOf<String>()
-    val json = jsonElement.asJsonObject
+    val json =  jsonElement.asJsonObject
     val entrySet = json.entrySet();
 
     for (o in entrySet) {
         val value = o.value
         val key = o.key
         if (value.isJsonObject && !value.isJsonArray) {
-            val childObjectName = upcaseFirstChar(key)
+            val childObjectName = uppercaseFirstChar(key)
             val typeString = toTsStruct(
                 jsonElement = value,
                 parseType = parseType,
@@ -67,7 +83,7 @@ private fun toTsStruct(
                 }
 
             } else if (valueArr.size() > 0 && valueArr[0].isJsonObject) {
-                val childObjectName = upcaseFirstChar(key)
+                val childObjectName = uppercaseFirstChar(key)
                 objectResult.add(toTsStruct(valueArr[0], parseType, childObjectName, structResult))
                 json.addProperty(key, removeMajority(childObjectName) + "[];")
             } else {
@@ -75,12 +91,16 @@ private fun toTsStruct(
             }
         } else if (value.isJsonPrimitive) {
             val jsonPrimitive = value.asJsonPrimitive;
-            if (jsonPrimitive.isBoolean) {
-                json.addProperty(key, "boolean;");
-            } else if (jsonPrimitive.isString) {
-                json.addProperty(key, "string;");
-            } else if (jsonPrimitive.isNumber) {
-                json.addProperty(key, "number;");
+            when {
+                jsonPrimitive.isBoolean -> {
+                    json.addProperty(key, "boolean;");
+                }
+                jsonPrimitive.isString -> {
+                    json.addProperty(key, "string;");
+                }
+                jsonPrimitive.isNumber -> {
+                    json.addProperty(key, "number;");
+                }
             }
         } else {
             json.addProperty(key, "any;")
@@ -186,9 +206,9 @@ private fun formatCharsToTypeScript(
     for (item in entrySets) {
         val key = item.key
         if (optionalKeys.contains(key)) {
-            result = result.replace(Regex("$key:"), lowcaseFirstChar("$key?:"))
+            result = result.replace(Regex("$key:"), lowercaseFirstChar("$key?:"))
         } else {
-            result = result.replace(Regex("$key:"), lowcaseFirstChar("$key:"))
+            result = result.replace(Regex("$key:"), lowercaseFirstChar("$key:"))
         }
     }
     val newObjectName = removeMajority(objectName)
@@ -198,9 +218,3 @@ private fun formatCharsToTypeScript(
     return "export interface $newObjectName $result"
 
 }
-
-// test
-//fun main() {
-//    val jsonArray = toTypescript("""{"name":111,"p" : [{"name":"vidy","age":34}]}""")
-//    print(jsonArray)
-//}
