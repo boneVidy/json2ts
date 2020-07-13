@@ -17,6 +17,7 @@ class TsFileGenerator {
         val document = event.getData(CommonDataKeys.EDITOR)?.document
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
+
             val tsCode = toTypescript(json, rootName!!, parseType)
             document?.apply {
                 insertString(textLength, tsCode)
