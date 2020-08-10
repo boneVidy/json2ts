@@ -23,7 +23,7 @@ This project is [MIT] licensed.
 ```
 MIT License
 
-Copyright (c) 2019 Daybrush
+Copyright (c) 2020 BoneVidy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
