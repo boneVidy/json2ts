@@ -11,16 +11,25 @@ import parser.ParseType
 import parser.toTypescript
 
 
-class TsFileGenerator {
+class TsGenerator {
 
     fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
-        val document = event.getData(CommonDataKeys.EDITOR)?.document
+        val editor = event.getData(CommonDataKeys.EDITOR)
+        val document =editor?.document
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
 
+
             val tsCode = toTypescript(json, rootName!!, parseType)
             document?.apply {
-                insertString(textLength, tsCode)
+                val selectModel = editor.selectionModel
+                val caretModel = editor.caretModel
+                val offset =  if (selectModel.hasSelection()) {
+                    selectModel.selectionEnd
+                } else  {
+                    caretModel.offset
+                }
+                insertString(offset, tsCode)
             }
         }
 

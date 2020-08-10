@@ -226,10 +226,10 @@ private fun formatCharsToTypeScript(
     val entrySets = jsonContent.entrySet()
     for (item in entrySets) {
         val key = item.key
-        if (optionalKeys.contains(key)) {
-            result = result.replace(Regex("$key:"), lowercaseFirstChar("$key?:"))
+        result = if (optionalKeys.contains(key)) {
+            result.replace(Regex("$key:"), lowercaseFirstChar("$key?:"))
         } else {
-            result = result.replace(Regex("$key:"), lowercaseFirstChar("$key:"))
+            result.replace(Regex("$key:"), lowercaseFirstChar("$key:"))
         }
     }
     val newObjectName = removeMajority(objectName)
