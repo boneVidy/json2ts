@@ -36,17 +36,3 @@ jobs:
         with:
           artifacts: "build/distributions/*.zip"
           token: ${{ secrets.GITHUB_RElEASE_TOKEN }}
-#           name: json2ts
-#           path: build/distributions/com.jsonts.kotlin-1.0.7.zip
-#      - name: GitHub Releases
-#        uses: fnkr/github-action-ghr@v1.2
-#           pattern: build/distributions/com.jsonts.kotlin-*-SNAPSHOT.zip
-#       - name: Zip Release
-#         uses: TheDoctor0/zip-release@v0.2.1
-#         with:
-#           # Filename for archive
-#           filename: json2ts
-#           # Base path for archive files
-#           path:  build/distributions/com.jsonts.kotlin-1.0.2-SNAPSHOT.zip
-#           # List of excluded files/directories
-# #           exclusions: # optional, default is 
