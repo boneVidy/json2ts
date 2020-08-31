@@ -2,7 +2,7 @@
     <id>com.jsonts.kotlin</id>
     <name>json2ts</name>
     <vendor email="vidy3587@gmail.com" url="https://github.com/boneVidy">boneVidy</vendor>
-    <version>1.0.10</version>
+    <version>1.0.12</version>
     <description><![CDATA[
     convert json to ts<br>
     <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
@@ -18,12 +18,11 @@
 
     <change-notes>
         <![CDATA[
-        <div>
-        <p>support new group create ts file</p>
-        <a href="https://github.com/boneVidy/json2ts">https://github.com/boneVidy/json2ts</a>
-        <div>
-        <img src="https://github.com/boneVidy/json2ts/raw/master/docs/tsfile.png" alt="image" style="max-width:400px;"></div>
-    </div>
+                <ul>
+                    <li>support new group create ts file</li>
+                    <li>fix some bugs</li>
+                </ul>
+
     ]]>
     </change-notes>
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
