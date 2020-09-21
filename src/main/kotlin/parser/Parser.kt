@@ -199,7 +199,7 @@ private fun detectMultiArrayTypes(
 
 
 private fun removeMajority(objectName: String): String {
-    val set = setOf<RegexOption>(RegexOption.IGNORE_CASE);
+    val set = setOf(RegexOption.IGNORE_CASE);
     val reg = Regex("IES$", set)
     val len = objectName.length
     if (reg.matches(objectName)) {
