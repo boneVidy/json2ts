@@ -13,7 +13,6 @@ class Json2ts : AnAction() {
     private val generatorDelegate = GeneratorDelegate()
 
     override fun actionPerformed(event: AnActionEvent) {
-//        event
         DialogBuilder().apply {
             val form = Json2TsForm().apply {
                 setOnGenerateListener(object : OnGenerateClicked {

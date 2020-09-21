@@ -16,24 +16,47 @@ class Json2TsForm {
     var generateButton: JButton?=null
     var rootObjectName: JTextField? = null
     var fileNameLabel: JLabel? = null
-    var typeRadio: JCheckBox? = null
+    var typeRadio: JRadioButton? = null
+    var interfaceRadio: JRadioButton? = null
+    var jsDocRadio: JRadioButton? = null
+    var buttonGroup:ButtonGroup? = null
     private var listener: OnGenerateClicked? = null
 
     fun setOnGenerateListener(listener: OnGenerateClicked) {
         this.listener = listener
-
+        interfaceRadio!!.isSelected = true
+        val radioList = listOf<JRadioButton?>(interfaceRadio, jsDocRadio, typeRadio)
+        radioList.forEach{
+            it!!.addActionListener{
+                radioList
+                        .filter { btn -> btn!!.text != it!!.actionCommand }
+                        .forEach{btn -> btn!!.isSelected = false}
+            }
+        }
         generateButton!!.addActionListener {
+            val selectedRadio = radioList.find { it!!.isSelected}
+            val parseType = when {
+                selectedRadio!!.text == "jsDoc" -> {
+                    ParseType.JsDoc
+                }
+                selectedRadio.text == "type" -> {
+                     ParseType.TypeStruct
+                }
+                else -> ParseType.InterfaceStruct
+            }
+            val rootName = if (rootObjectName!!.text != "") {rootObjectName!!.text}  else "RootObject"
             this.listener?.onClicked(
-                if (rootObjectName != null) rootObjectName!!.text else "RootObject",
+                    rootName,
                 if (editor != null) editor!!.text else "",
-                if (typeRadio!=null && typeRadio!!.isSelected ) ParseType.TypeStruct else ParseType.InterfaceStruct
+                    parseType
             )
         }
     }
 
     private fun createUIComponents() {
+
+
         editor = RSyntaxTextArea()
-//        editor!!.
         editor!!.syntaxEditingStyle = SyntaxConstants.SYNTAX_STYLE_JSON
         editor!!.isCodeFoldingEnabled = true
         try {
@@ -128,7 +151,7 @@ class Json2TsForm {
             )
         )
         fileNameLabel = JLabel()
-        fileNameLabel!!.text = "Root object name:"
+        fileNameLabel!!.text = "Root name:"
         rootView!!.add(
             fileNameLabel!!,
             GridConstraints(
@@ -147,6 +170,11 @@ class Json2TsForm {
                 false
             )
         )
+
+        buttonGroup = ButtonGroup()
+        buttonGroup!!.add(typeRadio)
+        buttonGroup!!.add(interfaceRadio)
+        buttonGroup!!.add(jsDocRadio)
     }
 
     /**
