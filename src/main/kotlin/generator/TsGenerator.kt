@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.vfs.VirtualFile
+import parser.JsDocParser
 
 
 import parser.ParseType
@@ -18,9 +19,11 @@ class TsGenerator {
         val document =editor?.document
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
-
-
-            val tsCode = toTypescript(json, rootName!!, parseType)
+            val code = if (parseType == ParseType.JsDoc) {
+                JsDocParser(json, rootName!!).toRawStringDoc()
+            } else {
+                toTypescript(json, rootName!!, parseType)
+            }
             document?.apply {
                 val selectModel = editor.selectionModel
                 val caretModel = editor.caretModel
@@ -29,7 +32,7 @@ class TsGenerator {
                 } else  {
                     caretModel.offset
                 }
-                insertString(offset, tsCode)
+                insertString(offset, code)
             }
         }
 
