@@ -2,7 +2,7 @@ package parser
 
 import com.google.gson.*
 
-class JsDocParser(jsonString: String,private val rootName: String) : JsonTravel(jsonString) {
+class JsDocParser(jsonString: String,private val rootName: String) : JsonTraverser(jsonString) {
     private val docsMap = mutableMapOf(rootName to "")
     init {
         create()
@@ -18,39 +18,39 @@ class JsDocParser(jsonString: String,private val rootName: String) : JsonTravel(
         } catch (e: Exception) {
             throw e
         }
-        travelRoot(rootJsonElement, null, rootName)
+        traverseRoot(rootJsonElement, null, rootName)
     }
-    private fun travelRoot (jsonElement: JsonElement, parentJsonElement: JsonElement?, key: String?) {
+    private fun traverseRoot (jsonElement: JsonElement, parentJsonElement: JsonElement?, key: String?) {
         val keyName = key?:rootName
         var type = "any"
         when {
             jsonElement.isJsonObject && !jsonElement.isJsonArray -> {
-                travelSingleObject(jsonElement.asJsonObject, parentJsonElement, key)
+                traverseSingleObject(jsonElement.asJsonObject, parentJsonElement, key)
             }
             jsonElement.isJsonArray -> {
-                type = travelArray(jsonElement.asJsonArray, parentJsonElement, "${key}Child" )
+                type = traverseArray(jsonElement.asJsonArray, parentJsonElement, "${key}Child" )
 
                 docsMap[keyName] = """
                     /**
-                    *@typedef {$keyName}
+                    *@typedef $keyName
                     *@type {$type}
                     */
                 """.trimIndent()
             }
             jsonElement.isJsonNull -> {
-                type = travelNull(jsonElement.asJsonNull, parentJsonElement, key)
+                type = traverseNull(jsonElement.asJsonNull, parentJsonElement, key)
                 docsMap[keyName] = """
                     /**
-                    *@typedef {$keyName}
+                    *@typedef $keyName
                     *@type {$type}
                     */
                 """.trimIndent()
             }
             jsonElement.isJsonPrimitive -> {
-                type = travelPrimitive(jsonElement.asJsonPrimitive, parentJsonElement, key)
+                type = traversePrimitive(jsonElement.asJsonPrimitive, parentJsonElement, key)
                 docsMap[keyName] = """
                     /**
-                    *@typedef {$keyName}
+                    *@typedef $keyName
                     *@type {$type}
                     */
                 """.trimIndent()
@@ -58,7 +58,7 @@ class JsDocParser(jsonString: String,private val rootName: String) : JsonTravel(
         }
     }
 
-    override fun travelPrimitive(asJsonPrimitive: JsonPrimitive, parentJsonElement: JsonElement?, key: String?):String {
+    override fun traversePrimitive(asJsonPrimitive: JsonPrimitive, parentJsonElement: JsonElement?, key: String?):String {
         var type = ""
         when {
             asJsonPrimitive.isString -> {
@@ -74,28 +74,28 @@ class JsDocParser(jsonString: String,private val rootName: String) : JsonTravel(
         return type
     }
 
-    override fun travelNull(jsonNull: JsonNull, parentJsonElement: JsonElement?, key: String?):String {
+    override fun traverseNull(jsonNull: JsonNull, parentJsonElement: JsonElement?, key: String?):String {
         return "any"
     }
 
-    override fun travelArray(jsonArray: JsonArray, parentJsonElement: JsonElement?, key: String?):String {
+    override fun traverseArray(jsonArray: JsonArray, parentJsonElement: JsonElement?, key: String?):String {
         if (jsonArray.size() > 0) {
             val jsonItemValue = jsonArray[0]
             if (jsonItemValue.isJsonObject && !jsonItemValue.isJsonArray) {
-               val objectType = travelSingleObject(jsonItemValue.asJsonObject, null, key)
+               val objectType = traverseSingleObject(jsonItemValue.asJsonObject, null, key)
                return "$objectType[]"
             } else if (jsonItemValue.isJsonPrimitive) {
-                val type = travelPrimitive(jsonItemValue.asJsonPrimitive, null, null)
+                val type = traversePrimitive(jsonItemValue.asJsonPrimitive, null, null)
                 return "$type[]"
             }
         }
         return "any[]"
     }
 
-    override fun travelSingleObject(jsonObject: JsonObject, parentJsonElement: JsonElement?, key: String?):String {
+    override fun traverseSingleObject(jsonObject: JsonObject, parentJsonElement: JsonElement?, key: String?):String {
         var doc = "/**\n"
         val typeName = toCamelcase(key ?: rootName)
-        doc += "*@typedef {$typeName}\n"
+        doc += "*@typedef $typeName\n"
         val set = jsonObject.entrySet()
         for (entry in set) {
             val value = entry.value
@@ -105,16 +105,16 @@ class JsDocParser(jsonString: String,private val rootName: String) : JsonTravel(
             var type = "any"
             when {
                 value.isJsonPrimitive -> {
-                    type = travelPrimitive(value.asJsonPrimitive, jsonObject, camelCaseKey)
+                    type = traversePrimitive(value.asJsonPrimitive, jsonObject, camelCaseKey)
                 }
                 value.isJsonObject -> {
-                    type = travelSingleObject(value.asJsonObject, jsonObject, camelCaseKey)
+                    type = traverseSingleObject(value.asJsonObject, jsonObject, camelCaseKey)
                 }
                 value.isJsonArray -> {
-                    type = travelArray(value.asJsonArray, jsonObject, camelCaseKey)
+                    type = traverseArray(value.asJsonArray, jsonObject, camelCaseKey)
                 }
                 value.isJsonNull -> {
-                    type = travelNull(value.asJsonNull, jsonObject, camelCaseKey)
+                    type = traverseNull(value.asJsonNull, jsonObject, camelCaseKey)
                 }
             }
             doc += if (value.isJsonNull) {
