@@ -13,7 +13,19 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("rootPrimitiveTest", """
             /**
-            *@typedef {Root}
+            *@typedef Root
+            *@type {number}
+            */
+        """.trimIndent(), ret)
+    }
+
+    @Test
+    fun customerRootNamePrimitiveTest() {
+        val jsonDocParser = JsDocParser("123456", "Response")
+        val ret = jsonDocParser.toRawStringDoc()
+        assertEquals("if set a customer name", """
+            /**
+            *@typedef CustomerRootNamePrimitiveTest
             *@type {number}
             */
         """.trimIndent(), ret)
@@ -25,7 +37,21 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("singleObjectTest", """
             /**
-            *@typedef {Root}
+            *@typedef Root
+            *@property {string} name
+            *@property {number[]} child
+            *@property {number} age
+            */
+        """.trimIndent(), ret)
+    }
+
+    @Test
+    fun singleObjectWithCustomerNameTest() {
+        val jsonDocParser = JsDocParser("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Response")
+        val ret = jsonDocParser.toRawStringDoc()
+        assertEquals("if it is a Object(not Array) and has a customer name", """
+            /**
+            *@typedef Response
             *@property {string} name
             *@property {number[]} child
             *@property {number} age
@@ -40,13 +66,33 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("nestedObjectIncludeArrayTest", """
             /**
-            *@typedef {Root}
+            *@typedef Root
             *@property {string} name
             *@property {number} age
             *@property {RootChild[]} child
             */
             /**
-            *@typedef {RootChild}
+            *@typedef RootChild
+            *@property {string} name
+            *@property {number} age
+            */
+        """.trimIndent(), ret)
+    }
+
+    @Test
+    fun nestedObjectWithCustomerNameIncludeArrayTest() {
+        val json = """{"name":"vidy","age":33,"child":[{"name":"susy","age":3}]}"""
+        val jsonDocParser = JsDocParser(json, "Response")
+        val ret = jsonDocParser.toRawStringDoc()
+        assertEquals("if is a nested object with customer name and include array", """
+            /**
+            *@typedef Response
+            *@property {string} name
+            *@property {number} age
+            *@property {ResponseChild[]} child
+            */
+            /**
+            *@typedef ResponseChild
             *@property {string} name
             *@property {number} age
             */
@@ -59,14 +105,34 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("nestedObjectIncludeObjectTest", """
             /**
-            *@typedef {Root}
+            *@typedef Root
             *@property {boolean} male
             *@property {string} name
             *@property {number} age
             *@property {RootChild} child
             */
             /**
-            *@typedef {RootChild}
+            *@typedef RootChild
+            *@property {string} name
+            *@property {number} age
+            */
+        """.trimIndent(), ret)
+    }
+    @Test
+    fun nestedObjectWithCustomerNameIncludeObjectTest() {
+        val json = """{"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3}}"""
+        val jsonDocParser = JsDocParser(json, "Response")
+        val ret = jsonDocParser.toRawStringDoc()
+        assertEquals("if object with customer name include object property", """
+            /**
+            *@typedef Response
+            *@property {boolean} male
+            *@property {string} name
+            *@property {number} age
+            *@property {ResponseChild} child
+            */
+            /**
+            *@typedef ResponseChild
             *@property {string} name
             *@property {number} age
             */
@@ -79,7 +145,7 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("if nestedObjectTest include a null property", """
             /**
-            *@typedef {Root}
+            *@typedef Root
             *@property {string} name
             *@property {number} age
             *@property {any} [child]
@@ -94,7 +160,7 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("if json is a null object", """
                     /**
-                    *@typedef {Root}
+                    *@typedef Root
                     *@type {any}
                     */
                 """.trimIndent(), ret)
@@ -107,7 +173,7 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("if json is a primitive array", """
             /**
-            *@typedef {Root}
+            *@typedef Root
             *@type {number[]}
             */
         """.trimIndent(), ret)
@@ -120,7 +186,7 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("if json is a empty array", """
             /**
-            *@typedef {Root}
+            *@typedef Root
             *@type {any[]}
             */
         """.trimIndent(), ret)
@@ -132,11 +198,11 @@ internal class JsDocParserTest {
         val ret = jsonDocParser.toRawStringDoc()
         assertEquals("if json is a object array", """
             /**
-            *@typedef {Root}
+            *@typedef Root
             *@type {RootChild[]}
             */
             /**
-            *@typedef {RootChild}
+            *@typedef RootChild
             *@property {string} name
             *@property {number} age
             */
