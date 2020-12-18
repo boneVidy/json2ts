@@ -35,4 +35,4 @@ jobs:
         uses: ncipollo/release-action@v1.5.0
         with:
           artifacts: "build/distributions/*.zip"
-          token: ${{ secrets.GITHUB_RElEASE_TOKEN }}
+          token: ${{ secrets.RELEASE_TOKEN }}
