@@ -1,10 +1,8 @@
-# Created by .ignore support plugin (hsz.mobi)
-/.gradle
-/.idea
-/.sandbox
-/.settings
-/bin
-/build
+/.gradle/
+/build/
+/.settings/
+/bin/
 .classpath
 .project
-/out
+/out/
+/.sandbox/

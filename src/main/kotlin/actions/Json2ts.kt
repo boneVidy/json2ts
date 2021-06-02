@@ -6,7 +6,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.DialogBuilder
 import generator.GeneratorDelegate
-import parser.ParseType
+import com.json2ts.parser.ParseType
 
 
 class Json2ts : AnAction() {

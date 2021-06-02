@@ -4,7 +4,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants
 import org.fife.ui.rsyntaxtextarea.Theme
-import parser.ParseType
+import com.json2ts.parser.ParseType
 import java.awt.Dimension
 import java.awt.Insets
 import java.io.IOException

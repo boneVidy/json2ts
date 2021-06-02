@@ -9,7 +9,7 @@ import com.intellij.openapi.progress.Task
 import exceptions.FileIOException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import parser.ParseType
+import com.json2ts.parser.ParseType
 import java.io.IOException
 
 class GeneratorDelegate(

@@ -34,7 +34,7 @@
     <!--    <depends>JavaScript</depends>-->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-
+<!--    <depends>JavaScript</depends>-->
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
     </extensions>

@@ -1,4 +1,4 @@
-package parser
+package com.json2ts.parser
 
 import com.google.gson.*
 

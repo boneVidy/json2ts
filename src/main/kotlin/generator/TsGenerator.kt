@@ -5,11 +5,13 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.vfs.VirtualFile
-import parser.JsDocParser
+import com.json2ts.parser.JsDocConverter
 
 
-import parser.ParseType
-import parser.toTypescript
+import com.json2ts.parser.ParseType
+import com.json2ts.parser.TsParseType
+import com.json2ts.parser.toTypescript
+import icons.com.json2ts.parser.TsConverter
 
 
 class TsGenerator {
@@ -20,9 +22,9 @@ class TsGenerator {
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
             val code = if (parseType == ParseType.JsDoc) {
-                JsDocParser(json, rootName!!).toRawStringDoc()
+                JsDocConverter(json, rootName!!).toCode()
             } else {
-                toTypescript(json, rootName!!, parseType)
+                TsConverter(json, rootName!!, TsParseType.InterfaceStruct).toCode()
             }
             document?.apply {
                 val selectModel = editor.selectionModel
