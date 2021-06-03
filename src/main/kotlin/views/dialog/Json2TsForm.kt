@@ -7,13 +7,13 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants
 import org.fife.ui.rsyntaxtextarea.Theme
 import java.awt.Dimension
 import java.awt.Insets
+import javax.swing.ButtonGroup
 import javax.swing.JButton
+import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JPanel
-import javax.swing.JTextField
 import javax.swing.JRadioButton
-import javax.swing.ButtonGroup
-import javax.swing.JComponent
+import javax.swing.JTextField
 
 @Suppress("MagicNumber")
 class Json2TsForm {

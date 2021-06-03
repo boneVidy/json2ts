@@ -7,7 +7,7 @@ import com.json2ts.parser.ParseType
 import com.json2ts.parser.TsPrimitiveConverter
 
 class TsConverter
-    (private val jsonString: String, private val rootName: String, private val tsParseType: ParseType) :
+(private val jsonString: String, private val rootName: String, private val tsParseType: ParseType) :
     TsPrimitiveConverter() {
     private val typeMap = mutableMapOf(rootName to "")
 
@@ -86,11 +86,13 @@ class TsConverter
         if (tsParseType == ParseType.InterfaceStruct) {
             typeMap[typeName] = """export interface $typeName {
 $code
-}""".trimIndent()
+}
+            """.trimIndent()
         } else {
             typeMap[typeName] = """export type $typeName = {
 $code
-}""".trimIndent()
+}
+            """.trimIndent()
         }
         return typeName
     }

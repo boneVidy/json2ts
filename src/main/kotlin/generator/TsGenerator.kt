@@ -6,7 +6,6 @@ import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.json2ts.parser.JsDocConverter
-
 import com.json2ts.parser.ParseType
 import icons.com.json2ts.parser.TsConverter
 

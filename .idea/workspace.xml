@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix detekt issue">
-      <change beforePath="$PROJECT_DIR$/.idea/detekt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/detekt.xml" afterDir="false" />
+    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix ktlint issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +138,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.ktlint" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -146,19 +146,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Run Tests">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="json2ts [patchPluginXml]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -272,7 +259,8 @@
       <workItem from="1622683116290" duration="986000" />
       <workItem from="1622684270703" duration="1418000" />
       <workItem from="1622685706142" duration="7805000" />
-      <workItem from="1622724207589" duration="153000" />
+      <workItem from="1622724207589" duration="245000" />
+      <workItem from="1622724471409" duration="585000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -316,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622698362437</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix ktlint issue">
+      <created>1622724393075</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622724393075</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +346,8 @@
     <MESSAGE value="remove unused file" />
     <MESSAGE value="fix linter issues" />
     <MESSAGE value="fix detekt issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix detekt issue" />
+    <MESSAGE value="fix ktlint issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix ktlint issue" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
