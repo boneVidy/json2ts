@@ -13,12 +13,14 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter("123456", "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "rootPrimitiveTest", """
+            "rootPrimitiveTest",
+            """
             /**
             *@typedef Root
             *@type {number}
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -27,12 +29,14 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter("123456", "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if set a customer name", """
+            "if set a customer name",
+            """
             /**
             *@typedef Response
             *@type {number}
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -41,14 +45,16 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "singleObjectTest", """
+            "singleObjectTest",
+            """
             /**
             *@typedef Root
             *@property {string} name
             *@property {number[]} child
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -57,14 +63,16 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if it is a Object(not Array) and has a customer name", """
+            "if it is a Object(not Array) and has a customer name",
+            """
             /**
             *@typedef Response
             *@property {string} name
             *@property {number[]} child
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -74,7 +82,8 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "nestedObjectIncludeArrayTest", """
+            "nestedObjectIncludeArrayTest",
+            """
             /**
             *@typedef Root
             *@property {string} name
@@ -86,7 +95,8 @@ internal class JsDocConverterTest {
             *@property {string} name
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -96,7 +106,8 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if is a nested object with customer name and include array", """
+            "if is a nested object with customer name and include array",
+            """
             /**
             *@typedef Response
             *@property {string} name
@@ -108,7 +119,8 @@ internal class JsDocConverterTest {
             *@property {string} name
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -118,7 +130,8 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "nestedObjectIncludeObjectTest", """
+            "nestedObjectIncludeObjectTest",
+            """
             /**
             *@typedef Root
             *@property {boolean} male
@@ -131,7 +144,8 @@ internal class JsDocConverterTest {
             *@property {string} name
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -141,7 +155,8 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if object with customer name include object property", """
+            "if object with customer name include object property",
+            """
             /**
             *@typedef Response
             *@property {boolean} male
@@ -154,7 +169,8 @@ internal class JsDocConverterTest {
             *@property {string} name
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -164,14 +180,16 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if nestedObjectTest include a null property", """
+            "if nestedObjectTest include a null property",
+            """
             /**
             *@typedef Root
             *@property {string} name
             *@property {number} age
             *@property {any} [child]
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -181,12 +199,14 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if json is a null object", """
+            "if json is a null object",
+            """
                     /**
                     *@typedef Root
                     *@type {any}
                     */
-                """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -196,12 +216,14 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if json is a primitive array", """
+            "if json is a primitive array",
+            """
             /**
             *@typedef Root
             *@type {number[]}
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -211,12 +233,14 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if json is a empty array", """
+            "if json is a empty array",
+            """
             /**
             *@typedef Root
             *@type {any[]}
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 
@@ -226,7 +250,8 @@ internal class JsDocConverterTest {
         val jsonDocParser = JsDocConverter(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
-            "if json is a object array", """
+            "if json is a object array",
+            """
             /**
             *@typedef Root
             *@type {RootChild[]}
@@ -236,7 +261,8 @@ internal class JsDocConverterTest {
             *@property {string} name
             *@property {number} age
             */
-        """.trimIndent(), ret
+            """.trimIndent(),
+            ret
         )
     }
 

@@ -4,7 +4,6 @@ import com.google.gson.JsonSyntaxException
 import icons.com.json2ts.parser.TsConverter
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import kotlin.test.assertFails
 
 @Suppress("TooManyFunctions", "MaxLineLength", "SwallowedException")
 internal class TsConverterTest {
@@ -63,7 +62,8 @@ internal class TsConverterTest {
         val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "nestedObjectIncludeArrayTest", """export interface Root {
+            "nestedObjectIncludeArrayTest",
+            """export interface Root {
 	name: string;
 	age: number;
 	child: RootChild[];
@@ -71,7 +71,8 @@ internal class TsConverterTest {
 export interface RootChild {
 	name: string;
 	age: number;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -81,7 +82,8 @@ export interface RootChild {
         val tsParser = TsConverter(json, "Response", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "if is a nested object with customer name and include array", """export interface Response {
+            "if is a nested object with customer name and include array",
+            """export interface Response {
 	name: string;
 	age: number;
 	child: ResponseChild[];
@@ -89,7 +91,8 @@ export interface RootChild {
 export interface ResponseChild {
 	name: string;
 	age: number;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -99,7 +102,8 @@ export interface ResponseChild {
         val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "nestedObjectIncludeObjectTest", """export interface Root {
+            "nestedObjectIncludeObjectTest",
+            """export interface Root {
 	male: boolean;
 	name: string;
 	age: number;
@@ -108,7 +112,8 @@ export interface ResponseChild {
 export interface RootChild {
 	name: string;
 	age: number;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -117,11 +122,12 @@ export interface RootChild {
         val json =
             """
                 {"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3,"Github":{"url":"https://github.com"}}}
-                """.trimIndent()
+            """.trimIndent()
         val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "nestedObjectIncludeObjectTest", """export interface Root {
+            "nestedObjectIncludeObjectTest",
+            """export interface Root {
 	male: boolean;
 	name: string;
 	age: number;
@@ -134,7 +140,8 @@ export interface RootChild {
 	name: string;
 	age: number;
 	Github: RootChildGithub;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -144,7 +151,8 @@ export interface RootChild {
         val tsParser = TsConverter(json, "Response", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "if object with customer name include object property", """export interface Response {
+            "if object with customer name include object property",
+            """export interface Response {
 	male: boolean;
 	name: string;
 	age: number;
@@ -153,7 +161,8 @@ export interface RootChild {
 export interface ResponseChild {
 	name: string;
 	age: number;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -163,11 +172,13 @@ export interface ResponseChild {
         val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "if nestedObjectTest include a null property", """export interface Root {
+            "if nestedObjectTest include a null property",
+            """export interface Root {
 	name: string;
 	age: number;
 	child?: any;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -201,11 +212,13 @@ export interface ResponseChild {
         val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
-            "if json is a object array", """export type Root = RootChild[];
+            "if json is a object array",
+            """export type Root = RootChild[];
 export interface RootChild {
 	name: string;
 	age: number;
-}""".trimIndent(), ret
+}""".trimIndent(),
+            ret
         )
     }
 
@@ -220,8 +233,6 @@ export interface RootChild {
                 "when parse a valid json, throw a exception"
             }
             return
-        }
-        assertFails("when parse a valid json, didn't throw a exception") {
         }
     }
 }

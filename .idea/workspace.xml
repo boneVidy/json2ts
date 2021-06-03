@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix detekt issue">
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/detekt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/detekt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +138,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.ktlint" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -143,13 +146,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Run Tests">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -266,7 +271,8 @@
       <workItem from="1622647979983" duration="606000" />
       <workItem from="1622683116290" duration="986000" />
       <workItem from="1622684270703" duration="1418000" />
-      <workItem from="1622685706142" duration="6234000" />
+      <workItem from="1622685706142" duration="7805000" />
+      <workItem from="1622724207589" duration="153000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -303,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622698130664</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix detekt issue">
+      <created>1622698362437</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622698362437</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,19 +353,13 @@
     <MESSAGE value="fix detekt issue" />
     <option name="LAST_COMMIT_MESSAGE" value="fix detekt issue" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt</url>
-          <line>19</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/com_jsonts_kotlin$TsConverterTest.ic" NAME="TsConverterTest Coverage Results" MODIFIED="1622698616525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.json2ts.parser.*</FILTER>
+    </SUITE>
   </component>
 </project>
