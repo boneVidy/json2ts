@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix linter issues">
-      <change afterPath="$PROJECT_DIR$/.idea/detekt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix detekt issue">
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detekt-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/detekt-config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Icons.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Icons.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/actions/Json2tsFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/actions/Json2tsFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsonTravel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsonTraver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsPrimitiveConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsPrimitiveConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exceptions/Exceptions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exceptions/FileIOException.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/GeneratorDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/GeneratorDelegate.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/MessageDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/MessageDelegate.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +266,7 @@
       <workItem from="1622647979983" duration="606000" />
       <workItem from="1622683116290" duration="986000" />
       <workItem from="1622684270703" duration="1418000" />
-      <workItem from="1622685706142" duration="5935000" />
+      <workItem from="1622685706142" duration="6234000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -314,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622685419953</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix detekt issue">
+      <created>1622698130664</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622698130664</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +337,8 @@
     <MESSAGE value="use intellij-platform-plugin-template" />
     <MESSAGE value="remove unused file" />
     <MESSAGE value="fix linter issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix linter issues" />
+    <MESSAGE value="fix detekt issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix detekt issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
