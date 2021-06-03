@@ -2,8 +2,7 @@ package com.json2ts.parser
 import com.google.gson.*
 
 
-abstract class JsonTraverser() {
-
+abstract class JsonTraverser {
 
     abstract fun traversePrimitive(asJsonPrimitive: JsonPrimitive, parentJsonElement: JsonElement?, key: String?):String
 

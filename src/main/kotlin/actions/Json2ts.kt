@@ -30,6 +30,6 @@ class Json2ts : AnAction() {
     }
 
     override fun update(e: AnActionEvent) {
-        e.presentation.isEnabled = true;
+        e.presentation.isEnabled = true
     }
 }

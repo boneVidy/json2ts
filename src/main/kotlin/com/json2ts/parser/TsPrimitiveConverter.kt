@@ -2,7 +2,7 @@ package com.json2ts.parser
 
 import com.google.gson.*
 
-open class TsPrimitiveConverter(): JsonTraverser() {
+open class TsPrimitiveConverter: JsonTraverser() {
     override fun traversePrimitive(asJsonPrimitive: JsonPrimitive, parentJsonElement: JsonElement?, key: String?):String {
         return when {
             asJsonPrimitive.isString -> {
@@ -46,5 +46,5 @@ open class TsPrimitiveConverter(): JsonTraverser() {
         }
     }
 
-    protected  fun uppercaseFirstChar(key: String): String = key[0].toUpperCase() + key.substring(1, key.length)
+    private fun uppercaseFirstChar(key: String): String = key[0].toUpperCase() + key.substring(1, key.length)
 }

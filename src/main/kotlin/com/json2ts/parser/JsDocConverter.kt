@@ -3,13 +3,13 @@ package com.json2ts.parser
 import com.google.gson.*
 
 open class JsDocConverter(private val jsonString: String, private val rootName: String) : TsPrimitiveConverter() {
-    protected val typeMap = mutableMapOf(rootName to "")
+    private val typeMap = mutableMapOf(rootName to "")
 
     init {
         create()
     }
 
-    public fun toCode(): String {
+    fun toCode(): String {
         return typeMap.values.joinToString("\n")
     }
 
@@ -17,7 +17,7 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
 
     private fun create() {
         rootJsonElement = try {
-            JsonParser().parse(jsonString)
+            JsonParser.parseString(jsonString)
         } catch (e: Exception) {
             throw e
         }
@@ -26,7 +26,7 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
 
     private fun traverseRoot(jsonElement: JsonElement, parentJsonElement: JsonElement?, key: String?) {
         val keyName = key ?: rootName
-        var type = "any"
+        val type: String
         when {
             jsonElement.isJsonObject && !jsonElement.isJsonArray -> {
                 traverseSingleObject(jsonElement.asJsonObject, parentJsonElement, key)

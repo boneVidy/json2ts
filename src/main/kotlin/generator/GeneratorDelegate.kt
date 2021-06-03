@@ -17,10 +17,9 @@ class GeneratorDelegate(
 ) {
 
     fun runGeneration(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
-//        event?.
         ProgressManager.getInstance().run(
             object : Task.Backgroundable(
-                event.project, "ts code is generating....", false
+                event.project, "Ts code is generating....", false
             ) {
                 override fun run(indicator: ProgressIndicator) = runBlocking<Unit> {
                     launch {
@@ -47,7 +46,7 @@ class GeneratorDelegate(
     fun runGenerationToFile(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(
             object : Task.Backgroundable(
-                event.project, "ts code is generating....", false
+                event.project, "Ts code is generating....", false
             ) {
                 override fun run(indicator: ProgressIndicator) = runBlocking<Unit> {
                     launch {

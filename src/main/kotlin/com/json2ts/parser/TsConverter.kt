@@ -1,10 +1,10 @@
 package icons.com.json2ts.parser
 
 import com.google.gson.*
-import com.json2ts.parser.TsParseType
+import com.json2ts.parser.ParseType
 import com.json2ts.parser.TsPrimitiveConverter
 
-class TsConverter(private val jsonString: String, private val rootName: String, private val tsParseType: TsParseType ):TsPrimitiveConverter() {
+class TsConverter(private val jsonString: String, private val rootName: String, private val tsParseType: ParseType):TsPrimitiveConverter() {
     private val typeMap = mutableMapOf(rootName to "")
     init {
         create()
@@ -16,7 +16,7 @@ class TsConverter(private val jsonString: String, private val rootName: String, 
 
     private fun create () {
         rootJsonElement = try {
-            JsonParser().parse(jsonString)
+            JsonParser.parseString(jsonString)
         } catch (e: Exception) {
             throw e
         }
@@ -25,7 +25,7 @@ class TsConverter(private val jsonString: String, private val rootName: String, 
     private fun traverseRoot(jsonElement: JsonElement, parentJsonElement: JsonElement?, key: String?) {
 
         val keyName = key ?: rootName
-        var type = "any"
+        val type: String
         when {
             jsonElement.isJsonObject && !jsonElement.isJsonArray -> {
                 traverseSingleObject(jsonElement.asJsonObject, parentJsonElement, key)
@@ -79,7 +79,7 @@ class TsConverter(private val jsonString: String, private val rootName: String, 
                 code += "\n"
             }
         }
-        if (tsParseType == TsParseType.InterfaceStruct) {
+        if (tsParseType == ParseType.InterfaceStruct) {
             typeMap[typeName] ="""export interface $typeName {
 $code
 }""".trimIndent()

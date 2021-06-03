@@ -9,54 +9,50 @@ import com.json2ts.parser.JsDocConverter
 
 
 import com.json2ts.parser.ParseType
-import com.json2ts.parser.TsParseType
-import com.json2ts.parser.toTypescript
 import icons.com.json2ts.parser.TsConverter
-
 
 class TsGenerator {
 
     fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
         val editor = event.getData(CommonDataKeys.EDITOR)
-        val document =editor?.document
+        val document = editor?.document
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
             val code = if (parseType == ParseType.JsDoc) {
                 JsDocConverter(json, rootName!!).toCode()
             } else {
-                TsConverter(json, rootName!!, TsParseType.InterfaceStruct).toCode()
+                TsConverter(json, rootName!!, ParseType.InterfaceStruct).toCode()
             }
             document?.apply {
                 val selectModel = editor.selectionModel
                 val caretModel = editor.caretModel
-                val offset =  if (selectModel.hasSelection()) {
+                val offset = if (selectModel.hasSelection()) {
                     selectModel.selectionEnd
-                } else  {
+                } else {
                     caretModel.offset
                 }
                 insertString(offset, code)
             }
         }
-
-
     }
 
     fun generateTsFile(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
         val virtualFile = event.getData(CommonDataKeys.VIRTUAL_FILE)
         val project = event.getData(CommonDataKeys.PROJECT) ?: return
         WriteCommandAction.runWriteCommandAction(project) {
-            val childFile: VirtualFile? = if (virtualFile?.isDirectory!!) {
+            val childFile: VirtualFile = if (virtualFile?.isDirectory!!) {
                 virtualFile.createChildData(this, "${rootName}.ts")
             } else {
                 virtualFile.parent.findOrCreateChildData(this, "${rootName}.ts")
             }
-            val tsCode = toTypescript(json, rootName!!, parseType)
-            childFile?.apply {
+            val converter = TsConverter(json, rootName!!, ParseType.InterfaceStruct)
+            val tsCode = converter.toCode()
+            childFile.apply {
                 setBinaryContent(tsCode.toByteArray())
                 refresh(true, true)
             }
             val fileEditorManager = FileEditorManager.getInstance(project)
-            childFile?.let { fileEditorManager.openFile(it, true) }
+            childFile.let { fileEditorManager.openFile(it, true) }
         }
     }
 }

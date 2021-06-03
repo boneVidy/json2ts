@@ -54,8 +54,6 @@ class Json2TsForm {
     }
 
     private fun createUIComponents() {
-
-
         editor = RSyntaxTextArea()
         editor!!.syntaxEditingStyle = SyntaxConstants.SYNTAX_STYLE_JSON
         editor!!.isCodeFoldingEnabled = true

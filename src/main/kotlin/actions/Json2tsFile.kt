@@ -23,13 +23,13 @@ class Json2tsFile : AnAction() {
                 })
             }
             setCenterPanel(form.rootView)
-            setTitle("create a ts file from json")
+            setTitle("Create A Ts File From Json")
             removeAllActions()
             show()
         }
     }
 
     override fun update(e: AnActionEvent) {
-        e.presentation.isEnabled = true;
+        e.presentation.isEnabled = true
     }
 }

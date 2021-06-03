@@ -7,7 +7,6 @@ object Icons {
 
     @JvmField
     val pluginIcon: Icon = IconLoader.getIcon("/icons/pluginIcon.svg").apply {
-//        set
     }
 
 
