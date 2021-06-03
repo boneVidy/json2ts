@@ -1,5 +1,7 @@
 # json2ts
+<!-- Plugin description -->
 a jetbrain plugin that convert json to typescript
+<!-- Plugin description end -->
 ## install from disk
 [download url](https://github.com/boneVidy/json2ts/releases) 
 

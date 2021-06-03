@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="use intellij-platform-plugin-template" />
+    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix linter issues">
+      <change afterPath="$PROJECT_DIR$/.idea/detekt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detekt-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/detekt-config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Icons.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Icons.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/actions/Json2tsFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/actions/Json2tsFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverterTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsonTravel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsonTraver.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverterTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsPrimitiveConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsPrimitiveConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exceptions/Exceptions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exceptions/FileIOException.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/GeneratorDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/GeneratorDelegate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/MessageDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/MessageDelegate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +48,65 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="changelog" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="formatting" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="intellij" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="com.jsonts.kotlin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -46,6 +125,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -62,17 +149,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.JsDocConverterTest">
+  <component name="RunManager" selected="Gradle.Run Tests">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -83,6 +171,27 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="json2ts [patchPluginXml]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="patchPluginXml" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="JsDocConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.jsonts.kotlin.main" />
@@ -114,7 +223,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TsConverterTest.nestedObjectIncludeObjectHasNestedObjectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TsConverterTest.convertObjectToTsTypeStruct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.jsonts.kotlin.main" />
       <extension name="coverage">
         <pattern>
@@ -124,13 +233,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.json2ts.parser" />
       <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="nestedObjectIncludeObjectHasNestedObjectTest" />
+      <option name="METHOD_NAME" value="convertObjectToTsTypeStruct" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TsConverterTest.nestedObjectIncludeObjectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TsConverterTest.singleObjectWithCustomerNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.jsonts.kotlin.main" />
       <extension name="coverage">
         <pattern>
@@ -140,23 +249,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.json2ts.parser" />
       <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="nestedObjectIncludeObjectTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TsConverterTest.testInvalidJsonSting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.json2ts.parser.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.json2ts.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="testInvalidJsonSting" />
+      <option name="METHOD_NAME" value="singleObjectWithCustomerNameTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,11 +257,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TsConverterTest.nestedObjectIncludeObjectHasNestedObjectTest" />
-        <item itemvalue="JUnit.JsDocConverterTest" />
         <item itemvalue="JUnit.TsConverterTest" />
-        <item itemvalue="JUnit.TsConverterTest.nestedObjectIncludeObjectTest" />
-        <item itemvalue="JUnit.TsConverterTest.testInvalidJsonSting" />
+        <item itemvalue="JUnit.TsConverterTest.convertObjectToTsTypeStruct" />
+        <item itemvalue="JUnit.TsConverterTest.singleObjectWithCustomerNameTest" />
+        <item itemvalue="JUnit.JsDocConverterTest" />
+        <item itemvalue="Gradle.json2ts [patchPluginXml]" />
       </list>
     </recent_temporary>
   </component>
@@ -189,6 +282,9 @@
       <workItem from="1622172367367" duration="7246000" />
       <workItem from="1622645720527" duration="1673000" />
       <workItem from="1622647979983" duration="606000" />
+      <workItem from="1622683116290" duration="986000" />
+      <workItem from="1622684270703" duration="1418000" />
+      <workItem from="1622685706142" duration="5935000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -204,7 +300,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622648458026</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="remove unused file">
+      <created>1622683287620</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622683287620</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix linter issues">
+      <created>1622685419953</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622685419953</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +331,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/dependabot/github_actions/ncipollo/release-action-1.8.6" />
                       </list>
                     </value>
                   </entry>
@@ -236,6 +346,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="use intellij-platform-plugin-template" />
-    <option name="LAST_COMMIT_MESSAGE" value="use intellij-platform-plugin-template" />
+    <MESSAGE value="remove unused file" />
+    <MESSAGE value="fix linter issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix linter issues" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt</url>
+          <line>19</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

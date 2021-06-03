@@ -1,8 +1,13 @@
 package generator
 
-import com.intellij.notification.*
+import com.intellij.notification.Notification
+import com.intellij.notification.Notifications
+import com.intellij.notification.NotificationDisplayType
+import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.ProjectManager
+
 class MessageDelegate {
     companion object {
         private const val GROUP_LOG = "json2ts logs"
@@ -16,14 +21,14 @@ class MessageDelegate {
         NotificationGroup(RESULT_INFO, NotificationDisplayType.BALLOON, true)
 
     fun onException(throwable: Throwable) {
-        val message =  if (throwable.message != null) {
+        val message = if (throwable.message != null) {
             "json2ts error: ${throwable.message}"
         } else {
             "json2ts error"
         }
 
         sendNotification(
-            logGroup.createNotification(message , NotificationType.ERROR)
+            logGroup.createNotification(message, NotificationType.ERROR)
         )
     }
 
@@ -37,5 +42,4 @@ class MessageDelegate {
             Notifications.Bus.notify(notification, projects[0])
         }
     }
-
 }

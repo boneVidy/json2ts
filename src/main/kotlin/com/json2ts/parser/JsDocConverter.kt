@@ -1,6 +1,8 @@
 package com.json2ts.parser
 
-import com.google.gson.*
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 
 open class JsDocConverter(private val jsonString: String, private val rootName: String) : TsPrimitiveConverter() {
     private val typeMap = mutableMapOf(rootName to "")
@@ -16,23 +18,19 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
     private lateinit var rootJsonElement: JsonElement
 
     private fun create() {
-        rootJsonElement = try {
-            JsonParser.parseString(jsonString)
-        } catch (e: Exception) {
-            throw e
-        }
-        traverseRoot(rootJsonElement, null, rootName)
+        rootJsonElement = JsonParser.parseString(jsonString)
+        traverseRoot(rootJsonElement, rootName)
     }
 
-    private fun traverseRoot(jsonElement: JsonElement, parentJsonElement: JsonElement?, key: String?) {
+    private fun traverseRoot(jsonElement: JsonElement, key: String?) {
         val keyName = key ?: rootName
         val type: String
         when {
             jsonElement.isJsonObject && !jsonElement.isJsonArray -> {
-                traverseSingleObject(jsonElement.asJsonObject, parentJsonElement, key)
+                traverseSingleObject(jsonElement.asJsonObject, key)
             }
             jsonElement.isJsonArray -> {
-                type = traverseArray(jsonElement.asJsonArray, parentJsonElement, "${key}Child")
+                type = traverseArray(jsonElement.asJsonArray, "${key}Child")
 
                 typeMap[keyName] = """
                     /**
@@ -42,7 +40,7 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
                 """.trimIndent()
             }
             jsonElement.isJsonNull -> {
-                type = traverseNull(jsonElement.asJsonNull, parentJsonElement, key)
+                type = traverseNull(jsonElement.asJsonNull, key)
                 typeMap[keyName] = """
                     /**
                     *@typedef $keyName
@@ -51,7 +49,7 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
                 """.trimIndent()
             }
             jsonElement.isJsonPrimitive -> {
-                type = traversePrimitive(jsonElement.asJsonPrimitive, parentJsonElement, key)
+                type = traversePrimitive(jsonElement.asJsonPrimitive, key)
                 typeMap[keyName] = """
                     /**
                     *@typedef $keyName
@@ -62,7 +60,7 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
         }
     }
 
-    override fun traverseSingleObject(jsonObject: JsonObject, parentJsonElement: JsonElement?, key: String?): String {
+    override fun traverseSingleObject(jsonObject: JsonObject, key: String?): String {
         var doc = "/**\n"
         val typeName = toCamelcase(key ?: rootName)
         doc += "*@typedef $typeName\n"
@@ -75,16 +73,16 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
             var type = "any"
             when {
                 value.isJsonPrimitive -> {
-                    type = traversePrimitive(value.asJsonPrimitive, jsonObject, camelCaseKey)
+                    type = traversePrimitive(value.asJsonPrimitive, camelCaseKey)
                 }
                 value.isJsonObject -> {
-                    type = traverseSingleObject(value.asJsonObject, jsonObject, camelCaseKey)
+                    type = traverseSingleObject(value.asJsonObject, camelCaseKey)
                 }
                 value.isJsonArray -> {
-                    type = traverseArray(value.asJsonArray, jsonObject, camelCaseKey)
+                    type = traverseArray(value.asJsonArray, camelCaseKey)
                 }
                 value.isJsonNull -> {
-                    type = traverseNull(value.asJsonNull, jsonObject, camelCaseKey)
+                    type = traverseNull(value.asJsonNull, camelCaseKey)
                 }
             }
             doc += if (value.isJsonNull) {
@@ -97,8 +95,4 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
         typeMap[typeName] = doc
         return typeName
     }
-
-
-
-
 }

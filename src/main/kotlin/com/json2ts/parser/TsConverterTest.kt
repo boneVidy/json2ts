@@ -6,6 +6,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import kotlin.test.assertFails
 
+@Suppress("TooManyFunctions", "MaxLineLength", "SwallowedException")
 internal class TsConverterTest {
 
     @Test
@@ -30,6 +31,17 @@ internal class TsConverterTest {
         assertEquals(
             "singleObjectTest",
             "export interface Root {\n\tname: string;\n\tchild: number[];\n\tage: number;\n}", ret
+        )
+    }
+
+    @Test
+    fun convertObjectToTsTypeStruct() {
+        val tsParser =
+            TsConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.TypeStruct)
+        val ret = tsParser.toCode()
+        assertEquals(
+            "singleObjectTest",
+            "export type Root = {\n\tname: string;\n\tchild: number[];\n\tage: number;\n}", ret
         )
     }
 
@@ -103,7 +115,9 @@ export interface RootChild {
     @Test
     fun nestedObjectIncludeObjectHasNestedObjectTest() {
         val json =
-            """{"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3,"Github":{"url":"https://github.com"}}}"""
+            """
+                {"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3,"Github":{"url":"https://github.com"}}}
+                """.trimIndent()
         val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
@@ -208,7 +222,6 @@ export interface RootChild {
             return
         }
         assertFails("when parse a valid json, didn't throw a exception") {
-
         }
     }
 }

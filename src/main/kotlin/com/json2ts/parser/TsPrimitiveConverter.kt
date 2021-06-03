@@ -1,9 +1,12 @@
 package com.json2ts.parser
 
-import com.google.gson.*
+import com.google.gson.JsonArray
+import com.google.gson.JsonNull
+import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 
-open class TsPrimitiveConverter: JsonTraverser() {
-    override fun traversePrimitive(asJsonPrimitive: JsonPrimitive, parentJsonElement: JsonElement?, key: String?):String {
+open class TsPrimitiveConverter : JsonTraver {
+    override fun traversePrimitive(asJsonPrimitive: JsonPrimitive, key: String?): String {
         return when {
             asJsonPrimitive.isString -> {
                 "string"
@@ -18,25 +21,27 @@ open class TsPrimitiveConverter: JsonTraverser() {
         }
     }
 
-    override fun traverseNull(jsonNull: JsonNull, parentJsonElement: JsonElement?, key: String?):String {
+    override fun traverseNull(jsonNull: JsonNull, key: String?): String {
         return "any"
     }
 
-    override fun traverseArray(jsonArray: JsonArray, parentJsonElement: JsonElement?, key: String?):String {
+    override fun traverseArray(jsonArray: JsonArray, key: String?): String {
+        var ret = ""
         if (jsonArray.size() > 0) {
             val jsonItemValue = jsonArray[0]
             if (jsonItemValue.isJsonObject && !jsonItemValue.isJsonArray) {
-                val objectType = traverseSingleObject(jsonItemValue.asJsonObject, null, key)
-                return "$objectType[]"
+                val objectType = traverseSingleObject(jsonItemValue.asJsonObject, key)
+                ret = "$objectType[]"
             } else if (jsonItemValue.isJsonPrimitive) {
-                val type = traversePrimitive(jsonItemValue.asJsonPrimitive, null, null)
-                return "$type[]"
+                val type = traversePrimitive(jsonItemValue.asJsonPrimitive, null)
+                ret = "$type[]"
             }
+            return ret
         }
         return "any[]"
     }
 
-    override fun traverseSingleObject(jsonObject: JsonObject, parentJsonElement: JsonElement?, key: String?): String {
+    override fun traverseSingleObject(jsonObject: JsonObject, key: String?): String {
         return "object"
     }
 

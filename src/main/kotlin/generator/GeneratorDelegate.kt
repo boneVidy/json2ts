@@ -6,16 +6,14 @@ import com.intellij.openapi.actionSystem.LangDataKeys
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
+import com.json2ts.parser.ParseType
 import exceptions.FileIOException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import com.json2ts.parser.ParseType
 import java.io.IOException
 
-class GeneratorDelegate(
-    private val messageDelegate: MessageDelegate = MessageDelegate()
-) {
-
+class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDelegate()) {
+    @Suppress("TooGenericExceptionCaught")
     fun runGeneration(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(
             object : Task.Backgroundable(
@@ -42,7 +40,7 @@ class GeneratorDelegate(
             }
         )
     }
-
+    @Suppress("TooGenericExceptionCaught")
     fun runGenerationToFile(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(
             object : Task.Backgroundable(
@@ -65,7 +63,6 @@ class GeneratorDelegate(
                             event.getData(LangDataKeys.VIRTUAL_FILE)?.refresh(false, true)
                         }
                     }
-
                 }
             }
         )

@@ -1,54 +1,62 @@
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
+import com.json2ts.parser.ParseType
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants
 import org.fife.ui.rsyntaxtextarea.Theme
-import com.json2ts.parser.ParseType
 import java.awt.Dimension
 import java.awt.Insets
-import java.io.IOException
-import javax.swing.*
+import javax.swing.JButton
+import javax.swing.JLabel
+import javax.swing.JPanel
+import javax.swing.JTextField
+import javax.swing.JRadioButton
+import javax.swing.ButtonGroup
+import javax.swing.JComponent
 
+@Suppress("MagicNumber")
 class Json2TsForm {
     var rootView: JPanel? = null
     var editor: RSyntaxTextArea? = null
-    var generateButton: JButton?=null
+    var generateButton: JButton? = null
     var rootObjectName: JTextField? = null
     var fileNameLabel: JLabel? = null
     var typeRadio: JRadioButton? = null
     var interfaceRadio: JRadioButton? = null
     var jsDocRadio: JRadioButton? = null
-    var buttonGroup:ButtonGroup? = null
+    var buttonGroup: ButtonGroup? = null
     private var listener: OnGenerateClicked? = null
 
     fun setOnGenerateListener(listener: OnGenerateClicked) {
         this.listener = listener
         interfaceRadio!!.isSelected = true
-        val radioList = listOf<JRadioButton?>(interfaceRadio, jsDocRadio, typeRadio)
-        radioList.forEach{
-            it!!.addActionListener{
+        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio)
+        radioList.forEach {
+            it!!.addActionListener {
                 radioList
-                        .filter { btn -> btn!!.text != it!!.actionCommand }
-                        .forEach{btn -> btn!!.isSelected = false}
+                    .filter { btn -> btn!!.text != it!!.actionCommand }
+                    .forEach { btn -> btn!!.isSelected = false }
             }
         }
         generateButton!!.addActionListener {
-            val selectedRadio = radioList.find { it!!.isSelected}
+            val selectedRadio = radioList.find { it!!.isSelected }
             val parseType = when {
                 selectedRadio!!.text == "jsDoc" -> {
                     ParseType.JsDoc
                 }
                 selectedRadio.text == "type" -> {
-                     ParseType.TypeStruct
+                    ParseType.TypeStruct
                 }
                 else -> ParseType.InterfaceStruct
             }
-            val rootName = if (rootObjectName!!.text != "") {rootObjectName!!.text}  else "RootObject"
+            val rootName = if (rootObjectName!!.text != "") {
+                rootObjectName!!.text
+            } else "RootObject"
             this.listener?.onClicked(
-                    rootName,
+                rootName,
                 if (editor != null) editor!!.text else "",
-                    parseType
+                parseType
             )
         }
     }
@@ -57,17 +65,12 @@ class Json2TsForm {
         editor = RSyntaxTextArea()
         editor!!.syntaxEditingStyle = SyntaxConstants.SYNTAX_STYLE_JSON
         editor!!.isCodeFoldingEnabled = true
-        try {
-            val theme = Theme.load(
-                javaClass.getResourceAsStream(
-                    "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"
-                )
+        val theme = Theme.load(
+            javaClass.getResourceAsStream(
+                "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"
             )
-            theme.apply(editor!!)
-        } catch (ioe: IOException) {
-            ioe.printStackTrace()
-        }
-
+        )
+        theme.apply(editor!!)
     }
 
     init {
@@ -83,6 +86,7 @@ class Json2TsForm {
      * DO NOT edit this method OR call it in your code!
      * @noinspection ALL
      */
+    @Suppress("LongMethod")
     private fun `$$$setupUI$$$`() {
         createUIComponents()
         rootView = JPanel()
@@ -168,7 +172,6 @@ class Json2TsForm {
                 false
             )
         )
-
         buttonGroup = ButtonGroup()
         buttonGroup!!.add(typeRadio)
         buttonGroup!!.add(interfaceRadio)
@@ -185,5 +188,4 @@ class Json2TsForm {
     interface OnGenerateClicked {
         fun onClicked(rootName: String, json: String, parseType: ParseType)
     }
-
 }
