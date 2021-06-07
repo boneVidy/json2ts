@@ -2,13 +2,22 @@
 <!-- Plugin description -->
 a jetbrain plugin that convert json to typescript
 <!-- Plugin description end -->
-## install from disk
-[download url](https://github.com/boneVidy/json2ts/releases) 
 
-![image](https://github.com/boneVidy/json2ts/blob/master/docs/install_from_disk.png)
-## install form plugin market
-you can download the plugin in the plugin market
-## how to use
+
+
+## Installation
+
+- Using IDE built-in plugin system:
+
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "json2ts"</kbd> >
+  <kbd>Install Plugin</kbd>
+
+- Manually:
+
+  Download the [latest release](https://github.com/boneVidy/json2ts/releases/latest) and install it manually using
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+  
+## How to use
 <!-- ![image](https://github.com/boneVidy/json2ts/blob/master/docs/screen.gif) -->
 ![image](https://github.com/boneVidy/json2ts/blob/master/docs/step1.webp)
 ![image](https://github.com/boneVidy/json2ts/blob/master/docs/step2.webp)
