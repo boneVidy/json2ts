@@ -33,7 +33,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("com.google.code.gson:gson:2.8.7")
     testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    testCompile("org.junit.jupiter:junit-jupiter-params:5.3.2")
+    testCompile("org.junit.jupiter:junit-jupiter-params:5.7.2")
 }
 
 // Configure gradle-intellij-plugin plugin.
