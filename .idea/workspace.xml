@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="release v1.0.23">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinScripting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ktlint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/JsonEditor.kt" afterDir="false" />
+    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/rsyntaxtextarea-2.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/actions/Json2ts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2ts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/actions/Json2tsFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2tsFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exceptions/FileIOException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/exceptions/FileIOException.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/GeneratorDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/GeneratorDelegate.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/MessageDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/MessageDelegate.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/generator/TsGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/TsGenerator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/views/dialog/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2ts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2ts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2tsFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2tsFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/GeneratorDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/GeneratorDelegate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +154,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Kotlin" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -176,7 +164,7 @@
       <recent name="com.json2ts" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Run Plugin">
+  <component name="RunManager" selected="Gradle.json2ts [ktlintFormat]">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -230,6 +218,48 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="json2ts [ktlintFormat]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="ktlintFormat" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="json2ts [ktlintKotlinScriptFormat]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="ktlintKotlinScriptFormat" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="TsConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.jsonts.kotlin.main" />
       <extension name="coverage">
@@ -245,45 +275,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TsConverterTest.convertObjectToTsTypeStruct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.json2ts.parser.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.json2ts.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="convertObjectToTsTypeStruct" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TsConverterTest.singleObjectWithCustomerNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.json2ts.parser.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.json2ts.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="singleObjectWithCustomerNameTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.json2ts [ktlintFormat]" />
+        <item itemvalue="Gradle.json2ts [ktlintKotlinScriptFormat]" />
         <item itemvalue="Gradle.json2ts [buildPlugin]" />
         <item itemvalue="Gradle.json2ts [assemble]" />
         <item itemvalue="JUnit.TsConverterTest" />
-        <item itemvalue="JUnit.TsConverterTest.convertObjectToTsTypeStruct" />
-        <item itemvalue="JUnit.TsConverterTest.singleObjectWithCustomerNameTest" />
       </list>
     </recent_temporary>
   </component>
@@ -321,7 +319,7 @@
       <workItem from="1623201089809" duration="87000" />
       <workItem from="1623289504875" duration="2015000" />
       <workItem from="1624003545717" duration="5690000" />
-      <workItem from="1624240658059" duration="8622000" />
+      <workItem from="1624240658059" duration="9296000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -400,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623307265001</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;">
+      <created>1624256987159</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1624256987159</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +444,8 @@
     <MESSAGE value="change pluginSinceBuild" />
     <MESSAGE value="change pluginUntilBuild" />
     <MESSAGE value="release v1.0.23" />
-    <option name="LAST_COMMIT_MESSAGE" value="release v1.0.23" />
+    <MESSAGE value="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -6,8 +6,8 @@ import com.intellij.openapi.actionSystem.LangDataKeys
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
-import com.json2ts.parser.ParseType
 import com.json2ts.exceptions.FileIOException
+import com.json2ts.parser.ParseType
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.IOException

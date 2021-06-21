@@ -2,9 +2,9 @@ package com.json2ts.actions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.DialogBuilder
+import com.json2ts.generator.GeneratorDelegate
 import com.json2ts.parser.ParseType
 import com.json2ts.views.Json2TsForm
-import com.json2ts.generator.GeneratorDelegate
 
 class Json2tsFile : AnAction() {
     private val generatorDelegate = GeneratorDelegate()
