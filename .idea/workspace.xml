@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;">
+    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="format code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2ts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2ts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2tsFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/actions/Json2tsFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/GeneratorDelegate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/generator/GeneratorDelegate.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +151,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Kotlin" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -319,7 +316,7 @@
       <workItem from="1623201089809" duration="87000" />
       <workItem from="1623289504875" duration="2015000" />
       <workItem from="1624003545717" duration="5690000" />
-      <workItem from="1624240658059" duration="9296000" />
+      <workItem from="1624240658059" duration="10384000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -405,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624256987159</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="format code">
+      <created>1624261559530</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1624261559530</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +449,8 @@
     <MESSAGE value="change pluginUntilBuild" />
     <MESSAGE value="release v1.0.23" />
     <MESSAGE value="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;" />
+    <MESSAGE value="format code" />
+    <option name="LAST_COMMIT_MESSAGE" value="format code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
