@@ -1,46 +1,65 @@
+package com.json2ts.views
+
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonParseException
+import com.google.gson.JsonParser
+import com.intellij.json.JsonFileType
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
+import com.json2ts.generator.MessageDelegate
 import com.json2ts.parser.ParseType
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea
-import org.fife.ui.rsyntaxtextarea.SyntaxConstants
-import org.fife.ui.rsyntaxtextarea.Theme
 import java.awt.Dimension
 import java.awt.Insets
-import javax.swing.ButtonGroup
 import javax.swing.JButton
-import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JPanel
-import javax.swing.JRadioButton
 import javax.swing.JTextField
+import javax.swing.JRadioButton
+import javax.swing.ButtonGroup
+import javax.swing.JComponent
 
 @Suppress("MagicNumber")
 class Json2TsForm {
-    var rootView: JPanel? = null
-    var editor: RSyntaxTextArea? = null
-    var generateButton: JButton? = null
-    var rootObjectName: JTextField? = null
-    var fileNameLabel: JLabel? = null
-    var typeRadio: JRadioButton? = null
-    var interfaceRadio: JRadioButton? = null
-    var jsDocRadio: JRadioButton? = null
-    var buttonGroup: ButtonGroup? = null
+    lateinit var rootView: JPanel
+    lateinit var editor: JsonEditor
+    lateinit var generateButton: JButton
+    lateinit var rootObjectName: JTextField
+    lateinit var fileNameLabel: JLabel
+    lateinit var typeRadio: JRadioButton
+    lateinit var interfaceRadio: JRadioButton
+    lateinit var jsDocRadio: JRadioButton
+    private lateinit var buttonGroup: ButtonGroup
+    lateinit var formatJsonBtn: JButton
     private var listener: OnGenerateClicked? = null
-
-    fun setOnGenerateListener(listener: OnGenerateClicked) {
-        this.listener = listener
-        interfaceRadio!!.isSelected = true
-        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio)
-        radioList.forEach {
-            it!!.addActionListener {
-                radioList
-                    .filter { btn -> btn!!.text != it!!.actionCommand }
-                    .forEach { btn -> btn!!.isSelected = false }
+    fun setFormatHandle() {
+        formatJsonBtn.addActionListener {
+            val text = editor.text
+            text.let {
+                val jsonString = try {
+                    val rootJsonElement = JsonParser.parseString(text)
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    gson.toJson(rootJsonElement)
+                } catch (e: JsonParseException) {
+                    MessageDelegate().catchException(e)
+                }
+                editor.text = jsonString as String
             }
         }
-        generateButton!!.addActionListener {
-            val selectedRadio = radioList.find { it!!.isSelected }
+    }
+    fun setOnGenerateListener(listener: OnGenerateClicked) {
+        this.listener = listener
+        interfaceRadio.isSelected = true
+        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio)
+        radioList.forEach {
+            it.addActionListener {
+                radioList
+                    .filter { btn -> btn.text != it!!.actionCommand }
+                    .forEach { btn -> btn.isSelected = false }
+            }
+        }
+        generateButton.addActionListener {
+            val selectedRadio = radioList.find { it.isSelected }
             val parseType = when {
                 selectedRadio!!.text == "jsDoc" -> {
                     ParseType.JsDoc
@@ -50,27 +69,23 @@ class Json2TsForm {
                 }
                 else -> ParseType.InterfaceStruct
             }
-            val rootName = if (rootObjectName!!.text != "") {
-                rootObjectName!!.text
+            val rootName = if (rootObjectName.text != "") {
+                rootObjectName.text
             } else "RootObject"
             this.listener?.onClicked(
                 rootName,
-                if (editor != null) editor!!.text else "",
+                editor.text,
                 parseType
             )
         }
     }
 
     private fun createUIComponents() {
-        editor = RSyntaxTextArea()
-        editor!!.syntaxEditingStyle = SyntaxConstants.SYNTAX_STYLE_JSON
-        editor!!.isCodeFoldingEnabled = true
-        val theme = Theme.load(
-            javaClass.getResourceAsStream(
-                "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"
-            )
-        )
-        theme.apply(editor!!)
+        editor = JsonEditor.createEditorByClipboard()
+        editor.apply {
+            setOneLineMode(false)
+            fileType = (JsonFileType())
+        }
     }
 
     init {
@@ -78,6 +93,7 @@ class Json2TsForm {
         // >>> IMPORTANT!! <<<
         // DO NOT EDIT OR ADD ANY CODE HERE!
         `$$$setupUI$$$`()
+        setFormatHandle()
     }
 
     /**
@@ -90,10 +106,10 @@ class Json2TsForm {
     private fun `$$$setupUI$$$`() {
         createUIComponents()
         rootView = JPanel()
-        rootView!!.layout = GridLayoutManager(2, 4, Insets(0, 0, 0, 0), -1, -1)
-        rootView!!.preferredSize = Dimension(500, 500)
+        rootView.layout = GridLayoutManager(2, 4, Insets(0, 0, 0, 0), -1, -1)
+        rootView.preferredSize = Dimension(500, 500)
         val scrollPane1 = JBScrollPane()
-        rootView!!.add(
+        rootView.add(
             scrollPane1,
             GridConstraints(
                 0,
@@ -113,9 +129,10 @@ class Json2TsForm {
         )
         scrollPane1.setViewportView(editor)
         generateButton = JButton()
-        generateButton!!.text = "Generate"
-        rootView!!.add(
-            generateButton!!,
+        formatJsonBtn = createFormatButton()
+        generateButton.text = "Generate"
+        rootView.add(
+            generateButton,
             GridConstraints(
                 1,
                 3,
@@ -134,8 +151,8 @@ class Json2TsForm {
         )
 
         rootObjectName = JTextField()
-        rootView!!.add(
-            rootObjectName!!,
+        rootView.add(
+            rootObjectName,
             GridConstraints(
                 1,
                 2,
@@ -153,9 +170,9 @@ class Json2TsForm {
             )
         )
         fileNameLabel = JLabel()
-        fileNameLabel!!.text = "Root name:"
-        rootView!!.add(
-            fileNameLabel!!,
+        fileNameLabel.text = "Root name:"
+        rootView.add(
+            fileNameLabel,
             GridConstraints(
                 1,
                 1,
@@ -173,15 +190,17 @@ class Json2TsForm {
             )
         )
         buttonGroup = ButtonGroup()
-        buttonGroup!!.add(typeRadio)
-        buttonGroup!!.add(interfaceRadio)
-        buttonGroup!!.add(jsDocRadio)
+        buttonGroup.add(typeRadio)
+        buttonGroup.add(interfaceRadio)
+        buttonGroup.add(jsDocRadio)
     }
-
+    private fun createFormatButton(): JButton {
+        return JButton()
+    }
     /**
      * @noinspection ALL
      */
-    fun `$$$getRootComponent$$$`(): JComponent? {
+    fun `$$$getRootComponent$$$`(): JComponent {
         return rootView
     }
 

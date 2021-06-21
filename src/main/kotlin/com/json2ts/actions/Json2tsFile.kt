@@ -1,12 +1,10 @@
-package actions
-
-import Json2TsForm
-import Json2TsForm.OnGenerateClicked
+package com.json2ts.actions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.DialogBuilder
 import com.json2ts.parser.ParseType
-import generator.GeneratorDelegate
+import com.json2ts.views.Json2TsForm
+import com.json2ts.generator.GeneratorDelegate
 
 class Json2tsFile : AnAction() {
     private val generatorDelegate = GeneratorDelegate()
@@ -14,12 +12,13 @@ class Json2tsFile : AnAction() {
     override fun actionPerformed(event: AnActionEvent) {
         DialogBuilder().apply {
             val form = Json2TsForm().apply {
-                setOnGenerateListener(object : OnGenerateClicked {
+                setOnGenerateListener(object : Json2TsForm.OnGenerateClicked {
                     override fun onClicked(rootName: String, json: String, parseType: ParseType) {
                         window.dispose()
                         generatorDelegate.runGenerationToFile(event, json, rootName, parseType)
                     }
                 })
+//                setFormatHandle()
             }
             setCenterPanel(form.rootView)
             setTitle("Create A Ts File From Json")

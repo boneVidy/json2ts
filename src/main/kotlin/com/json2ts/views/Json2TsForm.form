@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Json2TsForm">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.json2ts.views.Json2TsForm">
   <grid id="27dc6" binding="rootView" layout-manager="GridLayoutManager" row-count="3" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -17,7 +17,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="f6933" class="org.fife.ui.rsyntaxtextarea.RSyntaxTextArea" binding="editor" custom-create="true">
+          <component id="f6933" class="com.json2ts.views.JsonEditor" binding="editor" custom-create="true">
             <constraints/>
             <properties/>
           </component>
@@ -65,10 +65,18 @@
       </component>
       <component id="7ba59" class="javax.swing.JButton" binding="generateButton">
         <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="generate"/>
+        </properties>
+      </component>
+      <component id="663" class="javax.swing.JButton" binding="formatJsonBtn" >
+        <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Generate"/>
+          <text value="format json"/>
         </properties>
       </component>
     </children>

@@ -1,4 +1,4 @@
-package generator
+package com.json2ts.generator
 
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -7,7 +7,7 @@ import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
 import com.json2ts.parser.ParseType
-import exceptions.FileIOException
+import com.json2ts.exceptions.FileIOException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
@@ -27,8 +27,8 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
                             messageDelegate.showMessage("Ts interface has been generated")
                         } catch (e: Exception) {
                             when (e) {
-                                is IOException -> messageDelegate.onException(FileIOException())
-                                else -> messageDelegate.onException(e)
+                                is IOException -> messageDelegate.catchException(FileIOException())
+                                else -> messageDelegate.catchException(e)
                             }
                         } finally {
                             indicator.stop()
@@ -54,8 +54,8 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
                             messageDelegate.showMessage("Ts interface has been generated")
                         } catch (e: Throwable) {
                             when (e) {
-                                is IOException -> messageDelegate.onException(FileIOException())
-                                else -> messageDelegate.onException(e)
+                                is IOException -> messageDelegate.catchException(FileIOException())
+                                else -> messageDelegate.catchException(e)
                             }
                         } finally {
                             indicator.stop()

@@ -1,4 +1,4 @@
-package generator
+package com.json2ts.generator
 
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationDisplayType
@@ -20,7 +20,7 @@ class MessageDelegate {
     private val resultNotification =
         NotificationGroup(RESULT_INFO, NotificationDisplayType.BALLOON, true)
 
-    fun onException(throwable: Throwable) {
+    fun catchException(throwable: Throwable) {
         val message = if (throwable.message != null) {
             "json2ts error: ${throwable.message}"
         } else {

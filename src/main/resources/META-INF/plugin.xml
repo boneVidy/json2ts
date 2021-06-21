@@ -42,10 +42,10 @@
     <actions>
         <!-- Add your actions here -->
 
-        <action icon="Icons.pluginIcon" id="Json2ts" class="actions.Json2ts" text="Json2ts" description="Json2ts">
+        <action icon="Icons.pluginIcon" id="Json2ts" class="com.json2ts.actions.Json2ts" text="Json2ts" description="Json2ts">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <action icon="Icons.pluginIcon" id="actions.Json2tsFile" class="actions.Json2tsFile" text="Convert Json to Ts">
+        <action icon="Icons.pluginIcon" id="com.json2ts.actions.Json2tsFile" class="com.json2ts.actions.Json2tsFile" text="Convert Json to Ts">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>

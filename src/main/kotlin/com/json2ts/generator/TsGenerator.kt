@@ -1,4 +1,4 @@
-package generator
+package com.json2ts.generator
 
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
