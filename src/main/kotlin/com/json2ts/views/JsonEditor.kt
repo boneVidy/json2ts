@@ -14,11 +14,6 @@ class JsonEditor(project: Project?, s: String?) :
         fun createEditorByClipboard(): JsonEditor {
             val contents = CopyPasteManagerEx.getInstanceEx()
                 .contents?.getTransferData(DataFlavor.stringFlavor) as String?
-//            val rootJsonElement = JsonParser.parseString(contents ?: "")
-//            val gson = GsonBuilder().setPrettyPrinting().create()
-//            val jsonString = try {
-//                gson.toJson(rootJsonElement)
-//            }
             return JsonEditor(null, contents ?: "")
         }
     }
@@ -27,6 +22,7 @@ class JsonEditor(project: Project?, s: String?) :
         editor.setVerticalScrollbarVisible(true)
         editor.setHorizontalScrollbarVisible(true)
         val settings = editor.settings
+        editor.setPlaceholder("Please input a json text")
         settings.apply {
             isAllowSingleLogicalLineFolding = true
             isLineNumbersShown = true

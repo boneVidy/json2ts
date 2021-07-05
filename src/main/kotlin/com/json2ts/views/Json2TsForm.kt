@@ -127,7 +127,7 @@ class Json2TsForm {
                 false
             )
         )
-        scrollPane1.setViewportView(editor)
+        scrollPane1.add(editor)
         generateButton = JButton()
         formatJsonBtn = createFormatButton()
         generateButton.text = "Generate"
