@@ -84,7 +84,6 @@ class Json2TsForm {
         editor = JsonEditor.createEditorByClipboard()
         editor.apply {
             setOneLineMode(false)
-            fileType = (JsonFileType())
         }
     }
 
