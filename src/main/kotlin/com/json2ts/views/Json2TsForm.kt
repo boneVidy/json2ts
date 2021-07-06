@@ -3,7 +3,6 @@ package com.json2ts.views
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParseException
 import com.google.gson.JsonParser
-import com.intellij.json.JsonFileType
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
