@@ -18,7 +18,6 @@ class Json2tsFile : AnAction() {
                         generatorDelegate.runGenerationToFile(event, json, rootName, parseType)
                     }
                 })
-//                setFormatHandle()
             }
             setCenterPanel(form.rootView)
             setTitle("Create A Ts File From Json")

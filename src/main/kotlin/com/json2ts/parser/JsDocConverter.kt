@@ -18,7 +18,7 @@ open class JsDocConverter(private val jsonString: String, private val rootName: 
     private lateinit var rootJsonElement: JsonElement
 
     private fun create() {
-        rootJsonElement = JsonParser.parseString(jsonString)
+        rootJsonElement = JsonParser().parse(jsonString)
         traverseRoot(rootJsonElement, rootName)
     }
 
