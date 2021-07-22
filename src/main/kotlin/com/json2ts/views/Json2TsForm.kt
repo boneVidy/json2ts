@@ -36,7 +36,7 @@ class Json2TsForm {
             val text = editor.text
             text.let {
                 val jsonString = try {
-                    val rootJsonElement = JsonParser.parseString(text)
+                    val rootJsonElement = JsonParser().parse(text)
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     gson.toJson(rootJsonElement)
                 } catch (e: JsonParseException) {
