@@ -1,20 +1,16 @@
 package com.json2ts.views
 
-import com.intellij.ide.CopyPasteManagerEx
 import com.intellij.json.JsonLanguage
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.project.Project
 import com.intellij.ui.LanguageTextField
-import java.awt.datatransfer.DataFlavor
 
 class JsonEditor(project: Project?, s: String?) :
     LanguageTextField(JsonLanguage.INSTANCE, project, s.toString()) {
     companion object {
         @Suppress()
         fun createEditorByClipboard(): JsonEditor {
-            val contents = CopyPasteManagerEx.getInstanceEx()
-                .contents?.getTransferData(DataFlavor.stringFlavor) as String?
-            return JsonEditor(null, contents ?: "")
+            return JsonEditor(null, "")
         }
     }
     override fun createEditor(): EditorEx {
