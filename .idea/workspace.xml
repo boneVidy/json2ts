@@ -127,15 +127,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2020.2.4/78de574a01ef65cf411f5cf8d1ac3876f879e1f3/ideaIC-2020.2.4-sources.jar!/com/intellij/openapi/editor/EditorSettings.java" root0="SKIP_INSPECTION" />
-  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1r9FjJwkXRiUiCfKVy6SYE90mz1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -149,9 +149,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -161,18 +163,7 @@
       <recent name="com.json2ts" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.json2ts [ktlintFormat]">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Gradle.json2ts [assemble]">
     <configuration name="json2ts [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -274,11 +265,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.json2ts [ktlintFormat]" />
-        <item itemvalue="Gradle.json2ts [ktlintKotlinScriptFormat]" />
-        <item itemvalue="Gradle.json2ts [buildPlugin]" />
         <item itemvalue="Gradle.json2ts [assemble]" />
         <item itemvalue="JUnit.TsConverterTest" />
+        <item itemvalue="Gradle.json2ts [ktlintKotlinScriptFormat]" />
+        <item itemvalue="Gradle.json2ts [ktlintFormat]" />
+        <item itemvalue="Gradle.json2ts [buildPlugin]" />
       </list>
     </recent_temporary>
   </component>
@@ -317,6 +308,11 @@
       <workItem from="1623289504875" duration="2015000" />
       <workItem from="1624003545717" duration="5690000" />
       <workItem from="1624240658059" duration="10384000" />
+      <workItem from="1627357168507" duration="527000" />
+      <workItem from="1627357730724" duration="422000" />
+      <workItem from="1627974856416" duration="282000" />
+      <workItem from="1638801797886" duration="148000" />
+      <workItem from="1638801970860" duration="463000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -409,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624261559530</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="remove template clean-up action files">
+      <created>1627357331390</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1627357331390</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +429,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dependabot/github_actions/ncipollo/release-action-1.8.6" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -437,7 +440,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="use intellij-platform-plugin-template" />
@@ -450,7 +452,8 @@
     <MESSAGE value="release v1.0.23" />
     <MESSAGE value="fixes #15, fixes #11;&#10;replace richEditor to jetbrain editor;&#10;support format json;" />
     <MESSAGE value="format code" />
-    <option name="LAST_COMMIT_MESSAGE" value="format code" />
+    <MESSAGE value="remove template clean-up action files" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove template clean-up action files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
