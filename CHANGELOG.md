@@ -3,6 +3,7 @@
 # IntelliJ Platform Plugin Template Changelog
 
 ## [Unreleased]
+## [1.0.35]
 ## [1.0.34]
 ### Changed
 - Update `pluginVerifierIdeVersions` to `2020.2.4, 2020.3.3, 2021.1`
