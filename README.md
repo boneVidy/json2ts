@@ -30,4 +30,4 @@ a jetbrain plugin that convert json to typescript
 
 > [IntelliJ IDEA](https://en.wikipedia.org/wiki/IntelliJ_IDEA) IntelliJ IDEA is an integrated development environment (IDE) written in Java for developing computer software. It is developed by JetBrains (formerly known as IntelliJ), and is available as an Apache 2 Licensed community edition,[5] and in a proprietary commercial edition. Both can be used for commercial development.
 
-[<img src=".github/jetbrains-variant-3.png" width="200"/>](https://www.jetbrains.com/?from=mirai)
+[<img src="https://www.jetbrains.com/idea/img/idea-edu.svg" width="200"/>](https://www.jetbrains.com)
