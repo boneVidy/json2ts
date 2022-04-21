@@ -3,6 +3,7 @@
 # IntelliJ Platform Plugin Template Changelog
 
 ## [Unreleased]
+## [1.0.36]
 ## [1.0.35]
 ## [1.0.34]
 ### Changed
