@@ -22,7 +22,7 @@ class TsConverter
     private lateinit var rootJsonElement: JsonElement
 
     private fun create() {
-        rootJsonElement = JsonParser().parse(jsonString)
+        rootJsonElement = JsonParser.parseString(jsonString)
         traverseRoot(rootJsonElement, rootName)
     }
 
