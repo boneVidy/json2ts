@@ -19,9 +19,9 @@ a jetbrain plugin that convert json to typescript
   
 ## How to use
 <!-- ![image](https://github.com/boneVidy/json2ts/blob/master/docs/screen.gif) -->
-![image](https://github.com/boneVidy/json2ts/blob/master/docs/demo.gif)
+![image](https://github.com/boneVidy/json2ts/blob/main/docs/demo.gif)
 ### create ts file
-![image](https://github.com/boneVidy/json2ts/blob/master/docs/tsfile.png)
+![image](https://github.com/boneVidy/json2ts/blob/main/docs/tsfile.png)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FboneVidy%2Fjson2ts.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FboneVidy%2Fjson2ts?ref=badge_shield)
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FboneVidy%2Fjson2ts.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FboneVidy%2Fjson2ts?ref=badge_large)
