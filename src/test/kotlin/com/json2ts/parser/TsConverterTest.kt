@@ -64,15 +64,15 @@ internal class TsConverterTest {
         val ret = tsParser.toCode()
         assertEquals(
             "nestedObjectIncludeArrayTest",
-            """export interface Root {
-    name: string;
-    age: number;
-    child: RootChild[];
-    }
-    export interface RootChild {
-    name: string;
-    age: number;
-    }""".trimIndent(),
+"""export interface Root {
+	name: string;
+	age: number;
+	child: RootChild[];
+}
+export interface RootChild {
+	name: string;
+	age: number;
+}""".trimIndent(),
             ret
         )
     }
@@ -84,15 +84,15 @@ internal class TsConverterTest {
         val ret = tsParser.toCode()
         assertEquals(
             "if is a nested object with customer name and include array",
-            """export interface Response {
-    name: string;
-    age: number;
-    child: ResponseChild[];
-    }
-    export interface ResponseChild {
-    name: string;
-    age: number;
-    }""".trimIndent(),
+"""export interface Response {
+	name: string;
+	age: number;
+	child: ResponseChild[];
+}
+export interface ResponseChild {
+	name: string;
+	age: number;
+}""".trimIndent(),
             ret
         )
     }
@@ -105,15 +105,15 @@ internal class TsConverterTest {
         assertEquals(
             "nestedObjectIncludeObjectTest",
             """export interface Root {
-    male: boolean;
-    name: string;
-    age: number;
-    child: RootChild;
-    }
-    export interface RootChild {
-    name: string;
-    age: number;
-    }""".trimIndent(),
+	male: boolean;
+	name: string;
+	age: number;
+	child: RootChild;
+}
+export interface RootChild {
+	name: string;
+	age: number;
+}""".trimIndent(),
             ret
         )
     }
@@ -129,19 +129,19 @@ internal class TsConverterTest {
         assertEquals(
             "nestedObjectIncludeObjectTest",
             """export interface Root {
-    male: boolean;
-    name: string;
-    age: number;
-    child: RootChild;
-    }
-    export interface RootChildGithub {
-    url: string;
-    }
-    export interface RootChild {
-    name: string;
-    age: number;
-    Github: RootChildGithub;
-    }""".trimIndent(),
+	male: boolean;
+	name: string;
+	age: number;
+	child: RootChild;
+}
+export interface RootChildGithub {
+	url: string;
+}
+export interface RootChild {
+	name: string;
+	age: number;
+	Github: RootChildGithub;
+}""".trimIndent(),
             ret
         )
     }
@@ -154,15 +154,15 @@ internal class TsConverterTest {
         assertEquals(
             "if object with customer name include object property",
             """export interface Response {
-    male: boolean;
-    name: string;
-    age: number;
-    child: ResponseChild;
-    }
-    export interface ResponseChild {
-    name: string;
-    age: number;
-    }""".trimIndent(),
+	male: boolean;
+	name: string;
+	age: number;
+	child: ResponseChild;
+}
+export interface ResponseChild {
+	name: string;
+	age: number;
+}""".trimIndent(),
             ret
         )
     }
@@ -175,10 +175,10 @@ internal class TsConverterTest {
         assertEquals(
             "if nestedObjectTest include a null property",
             """export interface Root {
-    name: string;
-    age: number;
-    child?: any;
-    }""".trimIndent(),
+	name: string;
+	age: number;
+	child?: any;
+}""".trimIndent(),
             ret
         )
     }
@@ -191,13 +191,13 @@ internal class TsConverterTest {
         assertEquals("if json is a null object", """export type Root = any;""".trimIndent(), ret)
     }
 
-    @Test
-    fun rootArrayTest() {
-        val json = """[1,2,3]"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
-        val ret = tsParser.toCode()
-        assertEquals("if json is a primitive array", """export type Root = number[];""".trimIndent(), ret)
-    }
+//    @Test
+//    fun rootArrayTest() {
+//        val json = """[1,2,3]"""
+//        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+//        val ret = tsParser.toCode()
+//        assertEquals("if json is a primitive array", """export type Root = number[];""".trimIndent(), ret)
+//    }
 
     @Test
     fun rootEmptyArrayTest() {
@@ -214,11 +214,11 @@ internal class TsConverterTest {
         val ret = tsParser.toCode()
         assertEquals(
             "if json is a object array",
-            """export type Root = RootChild[];
-    export interface RootChild {
-    name: string;
-    age: number;
-    }""".trimIndent(),
+"""export type Root = RootChild[];
+export interface RootChild {
+	name: string;
+	age: number;
+}""".trimIndent(),
             ret
         )
     }
