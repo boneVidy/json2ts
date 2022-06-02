@@ -1,9 +1,10 @@
 package com.json2ts.parser
 
+
+
 import com.google.gson.JsonSyntaxException
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import kotlin.test.assertFails
 
 @Suppress("TooManyFunctions", "MaxLineLength", "SwallowedException")
 internal class JsDocConverterTest {
@@ -278,7 +279,6 @@ internal class JsDocConverterTest {
             }
             return
         }
-        assertFails("when parse a valid json, didn't throw a exception") {
-        }
+
     }
 }

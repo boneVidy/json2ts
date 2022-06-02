@@ -1,5 +1,6 @@
 package com.json2ts.parser
 
+
 import com.google.gson.JsonSyntaxException
 import icons.com.json2ts.parser.TsConverter
 import org.junit.Assert.assertEquals
@@ -64,14 +65,14 @@ internal class TsConverterTest {
         assertEquals(
             "nestedObjectIncludeArrayTest",
             """export interface Root {
-	name: string;
-	age: number;
-	child: RootChild[];
-}
-export interface RootChild {
-	name: string;
-	age: number;
-}""".trimIndent(),
+    name: string;
+    age: number;
+    child: RootChild[];
+    }
+    export interface RootChild {
+    name: string;
+    age: number;
+    }""".trimIndent(),
             ret
         )
     }
@@ -84,14 +85,14 @@ export interface RootChild {
         assertEquals(
             "if is a nested object with customer name and include array",
             """export interface Response {
-	name: string;
-	age: number;
-	child: ResponseChild[];
-}
-export interface ResponseChild {
-	name: string;
-	age: number;
-}""".trimIndent(),
+    name: string;
+    age: number;
+    child: ResponseChild[];
+    }
+    export interface ResponseChild {
+    name: string;
+    age: number;
+    }""".trimIndent(),
             ret
         )
     }
@@ -104,15 +105,15 @@ export interface ResponseChild {
         assertEquals(
             "nestedObjectIncludeObjectTest",
             """export interface Root {
-	male: boolean;
-	name: string;
-	age: number;
-	child: RootChild;
-}
-export interface RootChild {
-	name: string;
-	age: number;
-}""".trimIndent(),
+    male: boolean;
+    name: string;
+    age: number;
+    child: RootChild;
+    }
+    export interface RootChild {
+    name: string;
+    age: number;
+    }""".trimIndent(),
             ret
         )
     }
@@ -128,19 +129,19 @@ export interface RootChild {
         assertEquals(
             "nestedObjectIncludeObjectTest",
             """export interface Root {
-	male: boolean;
-	name: string;
-	age: number;
-	child: RootChild;
-}
-export interface RootChildGithub {
-	url: string;
-}
-export interface RootChild {
-	name: string;
-	age: number;
-	Github: RootChildGithub;
-}""".trimIndent(),
+    male: boolean;
+    name: string;
+    age: number;
+    child: RootChild;
+    }
+    export interface RootChildGithub {
+    url: string;
+    }
+    export interface RootChild {
+    name: string;
+    age: number;
+    Github: RootChildGithub;
+    }""".trimIndent(),
             ret
         )
     }
@@ -153,15 +154,15 @@ export interface RootChild {
         assertEquals(
             "if object with customer name include object property",
             """export interface Response {
-	male: boolean;
-	name: string;
-	age: number;
-	child: ResponseChild;
-}
-export interface ResponseChild {
-	name: string;
-	age: number;
-}""".trimIndent(),
+    male: boolean;
+    name: string;
+    age: number;
+    child: ResponseChild;
+    }
+    export interface ResponseChild {
+    name: string;
+    age: number;
+    }""".trimIndent(),
             ret
         )
     }
@@ -174,10 +175,10 @@ export interface ResponseChild {
         assertEquals(
             "if nestedObjectTest include a null property",
             """export interface Root {
-	name: string;
-	age: number;
-	child?: any;
-}""".trimIndent(),
+    name: string;
+    age: number;
+    child?: any;
+    }""".trimIndent(),
             ret
         )
     }
@@ -214,10 +215,10 @@ export interface ResponseChild {
         assertEquals(
             "if json is a object array",
             """export type Root = RootChild[];
-export interface RootChild {
-	name: string;
-	age: number;
-}""".trimIndent(),
+    export interface RootChild {
+    name: string;
+    age: number;
+    }""".trimIndent(),
             ret
         )
     }

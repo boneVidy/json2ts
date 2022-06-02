@@ -1,8 +1,4 @@
-/.gradle/
-/build/
-/.settings/
-/bin/
-.classpath
-.project
-/out/
-/.sandbox/
+.gradle
+.idea
+.qodana
+build

@@ -30,7 +30,7 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
                         }
                     } finally {
                         indicator.stop()
-                        ProjectView.getInstance(event.project).refresh()
+                        event.project?.let { ProjectView.getInstance(it).refresh() }
                         event.getData(LangDataKeys.VIRTUAL_FILE)?.refresh(false, true)
                     }
                 }
@@ -55,7 +55,7 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
                         }
                     } finally {
                         indicator.stop()
-                        ProjectView.getInstance(event.project).refresh()
+                        event.project?.let { ProjectView.getInstance(it).refresh() }
                         event.getData(LangDataKeys.VIRTUAL_FILE)?.refresh(false, true)
                     }
                 }
