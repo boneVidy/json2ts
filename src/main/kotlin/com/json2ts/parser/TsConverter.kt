@@ -1,10 +1,8 @@
-package icons.com.json2ts.parser
+package com.json2ts.parser
 
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import com.json2ts.parser.ParseType
-import com.json2ts.parser.TsPrimitiveConverter
 
 class TsConverter
 (private val jsonString: String, private val rootName: String, private val tsParseType: ParseType) :
@@ -55,7 +53,10 @@ class TsConverter
         var code = ""
 
         set.forEachIndexed { index, entry ->
-            val entryKey = entry.key
+            var entryKey = entry.key
+            if (entryKey.indexOf(" ") >= 0) {
+                entryKey = """"$entryKey""""
+            }
             val value = entry.value
             val camelCaseKey = toCamelcase(key ?: "", entryKey)
             // default type is any

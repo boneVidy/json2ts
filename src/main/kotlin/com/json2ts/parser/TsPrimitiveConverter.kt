@@ -47,7 +47,7 @@ open class TsPrimitiveConverter : JsonTraver {
 
     protected fun toCamelcase(vararg names: String): String {
         return names.reduce { acc, string ->
-            uppercaseFirstChar(acc) + uppercaseFirstChar(string)
+            (uppercaseFirstChar(acc) + uppercaseFirstChar(string)).replace(" ", "")
         }
     }
 

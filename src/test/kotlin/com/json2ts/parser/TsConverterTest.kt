@@ -1,8 +1,6 @@
 package com.json2ts.parser
 
-
 import com.google.gson.JsonSyntaxException
-import icons.com.json2ts.parser.TsConverter
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -72,7 +70,8 @@ internal class TsConverterTest {
 export interface RootChild {
 	name: string;
 	age: number;
-}""".trimIndent(),
+}
+""".trimIndent(),
             ret
         )
     }
@@ -92,7 +91,8 @@ export interface RootChild {
 export interface ResponseChild {
 	name: string;
 	age: number;
-}""".trimIndent(),
+}
+""".trimIndent(),
             ret
         )
     }
@@ -113,7 +113,8 @@ export interface ResponseChild {
 export interface RootChild {
 	name: string;
 	age: number;
-}""".trimIndent(),
+}
+            """.trimIndent(),
             ret
         )
     }
@@ -141,7 +142,8 @@ export interface RootChild {
 	name: string;
 	age: number;
 	Github: RootChildGithub;
-}""".trimIndent(),
+}
+            """.trimIndent(),
             ret
         )
     }
@@ -162,7 +164,8 @@ export interface RootChild {
 export interface ResponseChild {
 	name: string;
 	age: number;
-}""".trimIndent(),
+}
+            """.trimIndent(),
             ret
         )
     }
@@ -178,7 +181,8 @@ export interface ResponseChild {
 	name: string;
 	age: number;
 	child?: any;
-}""".trimIndent(),
+}
+            """.trimIndent(),
             ret
         )
     }
@@ -218,7 +222,8 @@ export interface ResponseChild {
 export interface RootChild {
 	name: string;
 	age: number;
-}""".trimIndent(),
+}
+""".trimIndent(),
             ret
         )
     }
@@ -235,5 +240,16 @@ export interface RootChild {
             }
             return
         }
+    }
+
+    @Test
+    fun `object's property name has space`() {
+        val json = """{"na me":"vidy","age":30}"""
+        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val ret = tsParser.toCode()
+        assertEquals(
+            "singleObjectTest",
+            "export interface Root {\n\t\"na me\": string;\n\tage: number;\n}", ret
+        )
     }
 }
