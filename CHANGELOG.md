@@ -3,8 +3,14 @@
 # IntelliJ Platform Plugin Template Changelog
 
 ## [Unreleased]
+
+## [1.0.42]
+v1.0.42
+
 ## [1.0.36]
+
 ## [1.0.35]
+
 ## [1.0.34]
 ### Changed
 - Update `pluginVerifierIdeVersions` to `2020.2.4, 2020.3.3, 2021.1`
@@ -169,13 +175,13 @@
 - Dependencies - bump ktlint to `9.3.0`
 - GitHub Actions - make *Update Changelog* job dependent on the *Publish Plugin*
 
+### Changed
+- GitHub Actions - run plugin verifier against `2019.3` `2020.1` `2020.2`
+
 ### Fixed
 - Resolve ktlint reports
 
 ## [0.3.1]
-### Changed
-- GitHub Actions - run plugin verifier against `2019.3` `2020.1` `2020.2`
-
 ### Fixed
 - GitHub Actions - Plugin Verifier broken for artifacts with whitespaces in name
 
