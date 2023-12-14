@@ -1,22 +1,24 @@
 package com.json2ts.parser
 
 import com.google.gson.JsonSyntaxException
+import com.json2ts.parser.typescript.ParseType
+import com.json2ts.parser.typescript.TsTransformer
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 @Suppress("TooManyFunctions", "MaxLineLength", "SwallowedException")
-internal class TsConverterTest {
+internal class TsTransformerTest {
 
     @Test
     fun rootPrimitiveTest() {
-        val tsParser = TsConverter("123456", "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer("123456", "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals("rootPrimitiveTest", """export type Root = number;""".trimIndent(), ret)
     }
 
     @Test
     fun customerRootNamePrimitiveTest() {
-        val tsParser = TsConverter("123456", "Response", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer("123456", "Response", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals("if set a customer name", """export type Response = number;""".trimIndent(), ret)
     }
@@ -24,7 +26,7 @@ internal class TsConverterTest {
     @Test
     fun singleObjectTest() {
         val tsParser =
-            TsConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.InterfaceStruct)
+            TsTransformer("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "singleObjectTest",
@@ -35,7 +37,7 @@ internal class TsConverterTest {
     @Test
     fun convertObjectToTsTypeStruct() {
         val tsParser =
-            TsConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.TypeStruct)
+            TsTransformer("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.TypeStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "singleObjectTest",
@@ -46,7 +48,7 @@ internal class TsConverterTest {
     @Test
     fun singleObjectWithCustomerNameTest() {
         val tsParser =
-            TsConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Response", ParseType.InterfaceStruct)
+            TsTransformer("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Response", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "if it is a Object(not Array) and has a customer name",
@@ -58,7 +60,7 @@ internal class TsConverterTest {
     @Test
     fun nestedObjectIncludeArrayTest() {
         val json = """{"name":"vidy","age":33,"child":[{"name":"susy","age":3}]}"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "nestedObjectIncludeArrayTest",
@@ -79,7 +81,7 @@ export interface RootChild {
     @Test
     fun nestedObjectWithCustomerNameIncludeArrayTest() {
         val json = """{"name":"vidy","age":33,"child":[{"name":"susy","age":3}]}"""
-        val tsParser = TsConverter(json, "Response", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Response", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "if is a nested object with customer name and include array",
@@ -100,7 +102,7 @@ export interface ResponseChild {
     @Test
     fun nestedObjectIncludeObjectTest() {
         val json = """{"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3}}"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "nestedObjectIncludeObjectTest",
@@ -125,7 +127,7 @@ export interface RootChild {
             """
                 {"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3,"Github":{"url":"https://github.com"}}}
             """.trimIndent()
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "nestedObjectIncludeObjectTest",
@@ -151,7 +153,7 @@ export interface RootChild {
     @Test
     fun nestedObjectWithCustomerNameIncludeObjectTest() {
         val json = """{"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3}}"""
-        val tsParser = TsConverter(json, "Response", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Response", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "if object with customer name include object property",
@@ -173,7 +175,7 @@ export interface ResponseChild {
     @Test
     fun nestedObjectTestIncludeNullProperty() {
         val json = """{"name":"aaa","age":60,"child":null}"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "if nestedObjectTest include a null property",
@@ -190,7 +192,7 @@ export interface ResponseChild {
     @Test
     fun nullTest() {
         val json = """null"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals("if json is a null object", """export type Root = any;""".trimIndent(), ret)
     }
@@ -206,7 +208,7 @@ export interface ResponseChild {
     @Test
     fun rootEmptyArrayTest() {
         val json = """[]"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals("if json is a empty array", """export type Root = any[];""".trimIndent(), ret)
     }
@@ -214,7 +216,7 @@ export interface ResponseChild {
     @Test
     fun rootArrayObjectTest() {
         val json = """[{"name":"vidy","age":30}]"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "if json is a object array",
@@ -233,7 +235,7 @@ export interface RootChild {
         val json = """{"name":"vidy""""
 
         try {
-            TsConverter(json, "Root", ParseType.InterfaceStruct)
+            TsTransformer(json, "Root", ParseType.InterfaceStruct)
         } catch (e: JsonSyntaxException) {
             assert(true) {
                 "when parse a valid json, throw a exception"
@@ -245,7 +247,7 @@ export interface RootChild {
     @Test
     fun `object's property name has space`() {
         val json = """{"na me":"vidy","age":30}"""
-        val tsParser = TsConverter(json, "Root", ParseType.InterfaceStruct)
+        val tsParser = TsTransformer(json, "Root", ParseType.InterfaceStruct)
         val ret = tsParser.toCode()
         assertEquals(
             "singleObjectTest",
@@ -257,7 +259,7 @@ export interface RootChild {
     @Test
     fun `singleObject to class` () {
         val tsParser =
-            TsConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.TSClass)
+            TsTransformer("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.TSClass)
         val ret = tsParser.toCode()
         assertEquals(
             "singleObjectTest",
@@ -269,10 +271,10 @@ export interface RootChild {
     @Test
     fun `object Array to class` () {
         val tsParser =
-            TsConverter("[{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}]", "Root", ParseType.TSClass)
+            TsTransformer("[{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}]", "Root", ParseType.TSClass)
         val ret = tsParser.toCode()
         assertEquals(
-            "singleObjectTest",
+            "if is a json array then create a root type and convert json array member to class",
             "export type Root = RootChild[];\nexport class RootChild {\n\tprivate name: string;\n\tprivate child: number[];\n\tprivate age: number;\n\tpublic setName (name: string) {\n\t\tthis.name = name;\n\t}\n\tpublic getName () {\n\t\treturn this.name;\n\t}\n\tpublic setChild (child: number[]) {\n\t\tthis.child = child;\n\t}\n\tpublic getChild () {\n\t\treturn this.child;\n\t}\n\tpublic setAge (age: number) {\n\t\tthis.age = age;\n\t}\n\tpublic getAge () {\n\t\treturn this.age;\n\t}\n}",
             ret
         )

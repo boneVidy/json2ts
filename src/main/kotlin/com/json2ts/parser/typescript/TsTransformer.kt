@@ -1,10 +1,10 @@
-package com.json2ts.parser
+package com.json2ts.parser.typescript
 
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 
-class TsConverter
+class TsTransformer
     (private val jsonString: String, private val rootName: String, private val tsParseType: ParseType) :
     TsPrimitiveConverter() {
     private val typeMap = mutableMapOf(rootName to "")

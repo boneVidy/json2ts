@@ -5,9 +5,9 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.vfs.VirtualFile
-import com.json2ts.parser.JsDocConverter
-import com.json2ts.parser.ParseType
-import com.json2ts.parser.TsConverter
+import com.json2ts.parser.typescript.JsDocTransformer
+import com.json2ts.parser.typescript.ParseType
+import com.json2ts.parser.typescript.TsTransformer
 
 class TsGenerator {
     fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
@@ -16,9 +16,9 @@ class TsGenerator {
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
             val code = if (parseType == ParseType.JsDoc) {
-                JsDocConverter(json, rootName!!).toCode()
+                JsDocTransformer(json, rootName!!).toCode()
             } else {
-                TsConverter(json, rootName!!, parseType).toCode()
+                TsTransformer(json, rootName!!, parseType).toCode()
             }
             document?.apply {
                 val selectModel = editor.selectionModel
@@ -43,7 +43,7 @@ class TsGenerator {
             } else {
                 virtualFile.parent.findOrCreateChildData(this, fileName)
             }
-            val converter = TsConverter(json, rootName!!, parseType)
+            val converter = TsTransformer(json, rootName!!, parseType)
             val tsCode = converter.toCode()
             childFile.apply {
                 setBinaryContent(tsCode.toByteArray())

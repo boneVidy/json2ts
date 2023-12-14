@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix build failed bug">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinScripting.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="refactor project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/ParseType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/ParseType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/TsConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/TsConverterTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/JsDocTransformerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/JsDocTransformerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/TsTransformerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/TsTransformerTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +87,7 @@
     "Gradle.Run Plugin.executor": "Run",
     "Gradle.json2ts [setupDependencies].executor": "Run",
     "JUnit.TsConverterTest.classTest.executor": "Run",
-    "JUnit.TsConverterTest.executor": "Run",
+    "JUnit.TsConverterTest.executor": "Coverage",
     "JUnit.TsConverterTest.object Array to class.executor": "Run",
     "JUnit.TsConverterTest.singleObject to class.executor": "Run",
     "RunOnceActivity.Enable generate summary features in internal mode": "true",
@@ -120,25 +114,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.json2ts.parser.typescript" />
       <recent name="com.json2ts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TsConverterTest">
-    <configuration name="TsConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.json2ts.parser.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.json2ts.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Gradle.Run Plugin">
     <configuration name="TsConverterTest.classTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.jsonts.kotlin.test" />
       <extension name="coverage">
@@ -203,10 +183,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TsTransformerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.jsonts.kotlin.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.json2ts.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.json2ts.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsTransformerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TsConverterTest" />
         <item itemvalue="JUnit.TsConverterTest.object Array to class" />
+        <item itemvalue="JUnit.TsTransformerTest" />
         <item itemvalue="JUnit.TsConverterTest.singleObject to class" />
         <item itemvalue="JUnit.TsConverterTest.classTest" />
         <item itemvalue="JUnit.TsConverterTest.testInvalidJsonSting" />
@@ -263,7 +258,7 @@
       <workItem from="1650521067806" duration="1298000" />
       <workItem from="1650522463736" duration="558000" />
       <workItem from="1702555902371" duration="3945000" />
-      <workItem from="1702559881934" duration="1360000" />
+      <workItem from="1702559881934" duration="2334000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -370,7 +365,23 @@
       <option name="project" value="LOCAL" />
       <updated>1638802764027</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add typescript class support">
+      <option name="closed" value="true" />
+      <created>1702561336512</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1702561336512</updated>
+    </task>
+    <task id="LOCAL-00017" summary="refactor project">
+      <option name="closed" value="true" />
+      <created>1702562260508</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1702562260508</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,14 +423,16 @@
     <MESSAGE value="format code" />
     <MESSAGE value="remove template clean-up action files" />
     <MESSAGE value="fix build failed bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix build failed bug" />
+    <MESSAGE value="add typescript class support" />
+    <MESSAGE value="refactor project" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor project" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/com_jsonts_kotlin$TsConverterTest.ic" NAME="TsConverterTest Coverage Results" MODIFIED="1622698616525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/com_jsonts_kotlin$TsConverterTest.ic" NAME="TsConverterTest Coverage Results" MODIFIED="1702561259338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.json2ts.parser.*</FILTER>
     </SUITE>
   </component>

@@ -3,15 +3,16 @@ package com.json2ts.parser
 
 
 import com.google.gson.JsonSyntaxException
+import com.json2ts.parser.typescript.JsDocTransformer
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 @Suppress("TooManyFunctions", "MaxLineLength", "SwallowedException")
-internal class JsDocConverterTest {
+internal class JsDocTransformerTest {
 
     @Test
     fun rootPrimitiveTest() {
-        val jsonDocParser = JsDocConverter("123456", "Root")
+        val jsonDocParser = JsDocTransformer("123456", "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "rootPrimitiveTest",
@@ -27,7 +28,7 @@ internal class JsDocConverterTest {
 
     @Test
     fun customerRootNamePrimitiveTest() {
-        val jsonDocParser = JsDocConverter("123456", "Response")
+        val jsonDocParser = JsDocTransformer("123456", "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if set a customer name",
@@ -43,7 +44,7 @@ internal class JsDocConverterTest {
 
     @Test
     fun singleObjectTest() {
-        val jsonDocParser = JsDocConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root")
+        val jsonDocParser = JsDocTransformer("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "singleObjectTest",
@@ -61,7 +62,7 @@ internal class JsDocConverterTest {
 
     @Test
     fun singleObjectWithCustomerNameTest() {
-        val jsonDocParser = JsDocConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Response")
+        val jsonDocParser = JsDocTransformer("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if it is a Object(not Array) and has a customer name",
@@ -80,7 +81,7 @@ internal class JsDocConverterTest {
     @Test
     fun nestedObjectIncludeArrayTest() {
         val json = """{"name":"vidy","age":33,"child":[{"name":"susy","age":3}]}"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "nestedObjectIncludeArrayTest",
@@ -104,7 +105,7 @@ internal class JsDocConverterTest {
     @Test
     fun nestedObjectWithCustomerNameIncludeArrayTest() {
         val json = """{"name":"vidy","age":33,"child":[{"name":"susy","age":3}]}"""
-        val jsonDocParser = JsDocConverter(json, "Response")
+        val jsonDocParser = JsDocTransformer(json, "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if is a nested object with customer name and include array",
@@ -128,7 +129,7 @@ internal class JsDocConverterTest {
     @Test
     fun nestedObjectIncludeObjectTest() {
         val json = """{"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3}}"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "nestedObjectIncludeObjectTest",
@@ -153,7 +154,7 @@ internal class JsDocConverterTest {
     @Test
     fun nestedObjectWithCustomerNameIncludeObjectTest() {
         val json = """{"male":true,"name":"vidy","age":33,"child":{"name":"susy","age":3}}"""
-        val jsonDocParser = JsDocConverter(json, "Response")
+        val jsonDocParser = JsDocTransformer(json, "Response")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if object with customer name include object property",
@@ -178,7 +179,7 @@ internal class JsDocConverterTest {
     @Test
     fun nestedObjectTestIncludeNullProperty() {
         val json = """{"name":"aaa","age":60,"child":null}"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if nestedObjectTest include a null property",
@@ -197,7 +198,7 @@ internal class JsDocConverterTest {
     @Test
     fun nullTest() {
         val json = """null"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if json is a null object",
@@ -214,7 +215,7 @@ internal class JsDocConverterTest {
     @Test
     fun rootArrayTest() {
         val json = """[1,2,3]"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if json is a primitive array",
@@ -231,7 +232,7 @@ internal class JsDocConverterTest {
     @Test
     fun rootEmptyArrayTest() {
         val json = """[]"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if json is a empty array",
@@ -248,7 +249,7 @@ internal class JsDocConverterTest {
     @Test
     fun rootArrayObjectTest() {
         val json = """[{"name":"vidy","age":30}]"""
-        val jsonDocParser = JsDocConverter(json, "Root")
+        val jsonDocParser = JsDocTransformer(json, "Root")
         val ret = jsonDocParser.toCode()
         assertEquals(
             "if json is a object array",
@@ -272,7 +273,7 @@ internal class JsDocConverterTest {
         val json = """{"name":"vidy""""
 
         try {
-            JsDocConverter(json, "Root")
+            JsDocTransformer(json, "Root")
         } catch (e: JsonSyntaxException) {
             assert(true) {
                 "when parse a valid json, throw a exception"

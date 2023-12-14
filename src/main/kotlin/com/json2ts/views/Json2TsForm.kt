@@ -7,7 +7,7 @@ import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
 import com.json2ts.generator.MessageDelegate
-import com.json2ts.parser.ParseType
+import com.json2ts.parser.typescript.ParseType
 import java.awt.Dimension
 import java.awt.Insets
 import javax.swing.ButtonGroup

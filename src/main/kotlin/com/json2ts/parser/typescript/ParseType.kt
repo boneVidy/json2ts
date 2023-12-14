@@ -1,4 +1,4 @@
-package com.json2ts.parser
+package com.json2ts.parser.typescript
 
 enum class ParseType {
     InterfaceStruct,
