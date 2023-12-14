@@ -28,6 +28,7 @@ class Json2TsForm {
     lateinit var typeRadio: JRadioButton
     lateinit var interfaceRadio: JRadioButton
     lateinit var jsDocRadio: JRadioButton
+    lateinit var classRadio: JRadioButton
     private lateinit var buttonGroup: ButtonGroup
     lateinit var formatJsonBtn: JButton
     private var listener: OnGenerateClicked? = null
@@ -49,7 +50,7 @@ class Json2TsForm {
     fun setOnGenerateListener(listener: OnGenerateClicked) {
         this.listener = listener
         interfaceRadio.isSelected = true
-        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio)
+        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio, classRadio)
         radioList.forEach {
             it.addActionListener {
                 radioList
@@ -59,23 +60,24 @@ class Json2TsForm {
         }
         generateButton.addActionListener {
             val selectedRadio = radioList.find { it.isSelected }
-            val parseType = when {
-                selectedRadio!!.text == "jsDoc" -> {
-                    ParseType.JsDoc
+            selectedRadio?.let {
+                val parseType = when (selectedRadio.text) {
+                    "JsDoc" -> ParseType.JsDoc
+                    "Type" -> ParseType.TypeStruct
+                    "Class" -> ParseType.TSClass
+                    "Interface" -> ParseType.InterfaceStruct
+                    else -> ParseType.InterfaceStruct
                 }
-                selectedRadio.text == "type" -> {
-                    ParseType.TypeStruct
-                }
-                else -> ParseType.InterfaceStruct
+                val rootName = if (rootObjectName.text != "") {
+                    rootObjectName.text
+                } else "RootObject"
+                this.listener?.onClicked(
+                    rootName,
+                    editor.text,
+                    parseType
+                )
             }
-            val rootName = if (rootObjectName.text != "") {
-                rootObjectName.text
-            } else "RootObject"
-            this.listener?.onClicked(
-                rootName,
-                editor.text,
-                parseType
-            )
+
         }
     }
 

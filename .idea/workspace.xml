@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="760d6b86-6626-4098-9fe5-8ffe3f876e4f" name="Default Changelist" comment="fix build failed bug">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinScripting.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/JsDocConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/ParseType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/ParseType.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/parser/TsConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/TsConverterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/json2ts/parser/TsConverterTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +29,11 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
-          <activation />
+          <activation>
+            <after_sync>
+              <task name="setupDependencies" />
+            </after_sync>
+          </activation>
         </task>
         <projects_view>
           <tree_state>
@@ -40,6 +49,7 @@
       <list>
         <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -55,6 +65,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="KotlinScriptingSettings">
+    <option name="suppressDefinitionsCheck" value="true" />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -65,22 +78,43 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="1r9FjJwkXRiUiCfKVy6SYE90mz1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build json2ts.executor": "Run",
+    "Gradle.Run Plugin.executor": "Run",
+    "Gradle.json2ts [setupDependencies].executor": "Run",
+    "JUnit.TsConverterTest.classTest.executor": "Run",
+    "JUnit.TsConverterTest.executor": "Run",
+    "JUnit.TsConverterTest.object Array to class.executor": "Run",
+    "JUnit.TsConverterTest.singleObject to class.executor": "Run",
+    "RunOnceActivity.Enable generate summary features in internal mode": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/vidy/Desktop/vidy/study/json2ts",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/vidy/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -89,30 +123,9 @@
       <recent name="com.json2ts" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TsConverterTest.testInvalidJsonSting">
-    <configuration name="json2ts [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="JsDocConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.main" />
+  <component name="RunManager" selected="JUnit.TsConverterTest">
+    <configuration name="TsConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.jsonts.kotlin.test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.json2ts.parser.*" />
@@ -120,14 +133,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.json2ts.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.JsDocConverterTest" />
+      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TsConverterTest.convertObjectToTsTypeStruct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.main" />
+    <configuration name="TsConverterTest.classTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.jsonts.kotlin.test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.json2ts.parser.*" />
@@ -136,14 +149,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.json2ts.parser" />
       <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="convertObjectToTsTypeStruct" />
+      <option name="METHOD_NAME" value="classTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TsConverterTest.rootPrimitiveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.jsonts.kotlin.main" />
+    <configuration name="TsConverterTest.object Array to class" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.jsonts.kotlin.test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.json2ts.parser.*" />
@@ -152,7 +165,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.json2ts.parser" />
       <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
-      <option name="METHOD_NAME" value="rootPrimitiveTest" />
+      <option name="METHOD_NAME" value="object Array to class" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TsConverterTest.singleObject to class" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.jsonts.kotlin.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.json2ts.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.json2ts.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.json2ts.parser.TsConverterTest" />
+      <option name="METHOD_NAME" value="singleObject to class" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -176,13 +205,20 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TsConverterTest" />
+        <item itemvalue="JUnit.TsConverterTest.object Array to class" />
+        <item itemvalue="JUnit.TsConverterTest.singleObject to class" />
+        <item itemvalue="JUnit.TsConverterTest.classTest" />
         <item itemvalue="JUnit.TsConverterTest.testInvalidJsonSting" />
-        <item itemvalue="JUnit.TsConverterTest.convertObjectToTsTypeStruct" />
-        <item itemvalue="JUnit.TsConverterTest.rootPrimitiveTest" />
-        <item itemvalue="JUnit.JsDocConverterTest" />
-        <item itemvalue="Gradle.json2ts [assemble]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-229f571c" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StandaloneScriptsStorage">
@@ -226,6 +262,8 @@
       <workItem from="1638801970860" duration="842000" />
       <workItem from="1650521067806" duration="1298000" />
       <workItem from="1650522463736" duration="558000" />
+      <workItem from="1702555902371" duration="3945000" />
+      <workItem from="1702559881934" duration="1360000" />
     </task>
     <task id="LOCAL-00001" summary="use intellij-platform-plugin-template">
       <created>1622648167079</created>
@@ -375,22 +413,6 @@
     <MESSAGE value="remove template clean-up action files" />
     <MESSAGE value="fix build failed bug" />
     <option name="LAST_COMMIT_MESSAGE" value="fix build failed bug" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt</url>
-          <line>131</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/com/json2ts/views/Json2TsForm.kt</url>
-          <line>130</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -252,4 +252,29 @@ export interface RootChild {
             "export interface Root {\n\t\"na me\": string;\n\tage: number;\n}", ret
         )
     }
+
+
+    @Test
+    fun `singleObject to class` () {
+        val tsParser =
+            TsConverter("{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}", "Root", ParseType.TSClass)
+        val ret = tsParser.toCode()
+        assertEquals(
+            "singleObjectTest",
+            "export class Root {\n\tprivate name: string;\n\tprivate child: number[];\n\tprivate age: number;\n\tpublic setName (name: string) {\n\t\tthis.name = name;\n\t}\n\tpublic getName () {\n\t\treturn this.name;\n\t}\n\tpublic setChild (child: number[]) {\n\t\tthis.child = child;\n\t}\n\tpublic getChild () {\n\t\treturn this.child;\n\t}\n\tpublic setAge (age: number) {\n\t\tthis.age = age;\n\t}\n\tpublic getAge () {\n\t\treturn this.age;\n\t}\n}",
+            ret
+        )
+    }
+
+    @Test
+    fun `object Array to class` () {
+        val tsParser =
+            TsConverter("[{\"name\":\"vidy\", \"child\": [1,2],\"age\":33}]", "Root", ParseType.TSClass)
+        val ret = tsParser.toCode()
+        assertEquals(
+            "singleObjectTest",
+            "export type Root = RootChild[];\nexport class RootChild {\n\tprivate name: string;\n\tprivate child: number[];\n\tprivate age: number;\n\tpublic setName (name: string) {\n\t\tthis.name = name;\n\t}\n\tpublic getName () {\n\t\treturn this.name;\n\t}\n\tpublic setChild (child: number[]) {\n\t\tthis.child = child;\n\t}\n\tpublic getChild () {\n\t\treturn this.child;\n\t}\n\tpublic setAge (age: number) {\n\t\tthis.age = age;\n\t}\n\tpublic getAge () {\n\t\treturn this.age;\n\t}\n}",
+            ret
+        )
+    }
 }
