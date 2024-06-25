@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 
+## [1.0.43]
+add Class generata support
+
 ## [1.0.42]
-v1.0.42
 
 ## [1.0.36]
 
