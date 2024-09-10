@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 
+## [1.0.46]
+v1.0.46
+
 ## [1.0.44]
-add typescript class support
 
 ## [1.0.43]
 
