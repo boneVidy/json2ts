@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 
+## [1.0.47]
+replace deprecated methods
+
 ## [1.0.44]
-add typescript class support
 
 ## [1.0.43]
 
