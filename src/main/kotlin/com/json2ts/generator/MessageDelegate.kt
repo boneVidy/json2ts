@@ -1,8 +1,7 @@
 package com.json2ts.generator
 
 import com.intellij.notification.Notification
-import com.intellij.notification.NotificationDisplayType
-import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
 import com.intellij.openapi.application.ApplicationManager
@@ -14,11 +13,9 @@ class MessageDelegate {
         private const val RESULT_INFO = "json2ts results"
     }
 
-    private val logGroup =
-        NotificationGroup(GROUP_LOG, NotificationDisplayType.BALLOON, true)
+    private val logGroup = NotificationGroupManager.getInstance().getNotificationGroup(GROUP_LOG)
 
-    private val resultNotification =
-        NotificationGroup(RESULT_INFO, NotificationDisplayType.BALLOON, true)
+    private val resultNotification = NotificationGroupManager.getInstance().getNotificationGroup(RESULT_INFO)
 
     fun catchException(throwable: Throwable) {
         val message = if (throwable.message != null) {
