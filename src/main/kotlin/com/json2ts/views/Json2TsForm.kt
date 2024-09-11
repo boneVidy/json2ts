@@ -29,6 +29,7 @@ class Json2TsForm {
     lateinit var interfaceRadio: JRadioButton
     lateinit var jsDocRadio: JRadioButton
     lateinit var classRadio: JRadioButton
+    lateinit var zodRadio: JRadioButton
     private lateinit var buttonGroup: ButtonGroup
     lateinit var formatJsonBtn: JButton
     private var listener: OnGenerateClicked? = null
@@ -50,7 +51,7 @@ class Json2TsForm {
     fun setOnGenerateListener(listener: OnGenerateClicked) {
         this.listener = listener
         interfaceRadio.isSelected = true
-        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio, classRadio)
+        val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio, classRadio, zodRadio)
         radioList.forEach {
             it.addActionListener {
                 radioList
@@ -66,6 +67,7 @@ class Json2TsForm {
                     "Type" -> ParseType.TypeStruct
                     "Class" -> ParseType.TSClass
                     "Interface" -> ParseType.InterfaceStruct
+                    "Zod" -> ParseType.ZodSchema
                     else -> ParseType.InterfaceStruct
                 }
                 val rootName = if (rootObjectName.text != "") {
@@ -193,6 +195,8 @@ class Json2TsForm {
         buttonGroup.add(typeRadio)
         buttonGroup.add(interfaceRadio)
         buttonGroup.add(jsDocRadio)
+        buttonGroup.add(classRadio)
+        buttonGroup.add(zodRadio)
     }
     private fun createFormatButton(): JButton {
         return JButton()

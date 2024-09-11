@@ -4,5 +4,6 @@ enum class ParseType {
     InterfaceStruct,
     TypeStruct,
     JsDoc,
-    TSClass
+    TSClass,
+    ZodSchema,
 }
