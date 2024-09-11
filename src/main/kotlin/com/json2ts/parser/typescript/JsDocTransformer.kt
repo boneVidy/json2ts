@@ -4,14 +4,14 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 
-open class JsDocTransformer(private val jsonString: String, private val rootName: String) : TsPrimitiveConverter() {
+open class JsDocTransformer(private val jsonString: String, private val rootName: String) : TsPrimitiveConverter(), ToCode {
     private val typeMap = mutableMapOf(rootName to "")
 
     init {
         create()
     }
 
-    fun toCode(): String {
+    override fun toCode(): String {
         return typeMap.values.joinToString("\n")
     }
 

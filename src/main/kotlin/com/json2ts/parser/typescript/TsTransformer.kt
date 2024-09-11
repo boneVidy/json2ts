@@ -6,14 +6,14 @@ import com.google.gson.JsonParser
 
 class TsTransformer
     (private val jsonString: String, private val rootName: String, private val tsParseType: ParseType) :
-    TsPrimitiveConverter() {
+    TsPrimitiveConverter(), ToCode {
     private val typeMap = mutableMapOf(rootName to "")
 
     init {
         create()
     }
 
-    fun toCode(): String {
+    override fun toCode(): String {
         return typeMap.values.joinToString("\n")
     }
 
