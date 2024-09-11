@@ -4,8 +4,8 @@
 
 ## [Unreleased]
 
-## [1.0.46]
-v1.0.46
+## [1.0.47]
+replace deprecated methods
 
 ## [1.0.44]
 
