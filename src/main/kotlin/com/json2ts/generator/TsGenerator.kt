@@ -8,6 +8,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.json2ts.parser.typescript.JsDocTransformer
 import com.json2ts.parser.typescript.ParseType
 import com.json2ts.parser.typescript.TsTransformer
+import com.json2ts.parser.typescript.ZodTransformer
 
 class TsGenerator {
     fun generateFromJsonByDocument(json: String, event: AnActionEvent, rootName: String?, parseType: ParseType) {
@@ -15,20 +16,21 @@ class TsGenerator {
         val document = editor?.document
         val project = event.getData(CommonDataKeys.PROJECT)
         WriteCommandAction.runWriteCommandAction(project) {
-            val code = if (parseType == ParseType.JsDoc) {
-                JsDocTransformer(json, rootName!!).toCode()
-            } else {
-                TsTransformer(json, rootName!!, parseType).toCode()
-            }
-            document?.apply {
-                val selectModel = editor.selectionModel
-                val caretModel = editor.caretModel
-                val offset = if (selectModel.hasSelection()) {
-                    selectModel.selectionEnd
-                } else {
-                    caretModel.offset
+            when (parseType) {
+                ParseType.JsDoc -> JsDocTransformer(json, rootName!!).toCode()
+                ParseType.ZodSchema -> ZodTransformer(json, rootName!!).toCode()
+                else -> TsTransformer(json, rootName!!, parseType).toCode()
+            }.let { code ->
+                document?.apply {
+                    val selectModel = editor.selectionModel
+                    val caretModel = editor.caretModel
+                    val offset = if (selectModel.hasSelection()) {
+                        selectModel.selectionEnd
+                    } else {
+                        caretModel.offset
+                    }
+                    insertString(offset, code)
                 }
-                insertString(offset, code)
             }
         }
     }
