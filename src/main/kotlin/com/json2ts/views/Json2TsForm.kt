@@ -3,6 +3,7 @@ package com.json2ts.views
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParseException
 import com.google.gson.JsonParser
+import com.intellij.ide.BrowserUtil
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
@@ -23,6 +24,7 @@ class Json2TsForm {
     lateinit var rootView: JPanel
     lateinit var editor: JsonEditor
     lateinit var generateButton: JButton
+    lateinit var starButton: JButton
     lateinit var rootObjectName: JTextField
     lateinit var fileNameLabel: JLabel
     lateinit var typeRadio: JRadioButton
@@ -46,6 +48,11 @@ class Json2TsForm {
                 }
                 editor.text = jsonString as String
             }
+        }
+    }
+    fun setStarHandle() {
+        starButton.addActionListener {
+            BrowserUtil.browse("https://github.com/boneVidy/json2ts")
         }
     }
     fun setOnGenerateListener(listener: OnGenerateClicked) {
@@ -96,6 +103,7 @@ class Json2TsForm {
         // DO NOT EDIT OR ADD ANY CODE HERE!
         `$$$setupUI$$$`()
         setFormatHandle()
+        setStarHandle()
     }
 
     /**
