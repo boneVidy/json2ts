@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 
+## [1.0.52]
+replace deprecated  methods
+
 ## [1.0.49]
-add zod schema support
 
 ## [1.0.48]
 
