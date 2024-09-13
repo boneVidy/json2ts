@@ -2,10 +2,8 @@ package com.json2ts.activity
 
 import com.intellij.ide.BrowserUtil
 import com.intellij.notification.Notification
-import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
-import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import com.json2ts.state.NotificationOnFirstRun
@@ -13,7 +11,7 @@ import javax.swing.event.HyperlinkEvent
 
 class MyStartupActivity : StartupActivity {
     override fun runActivity(project: Project) {
-        val service = ServiceManager.getService(NotificationOnFirstRun::class.java)
+        val service = project.getService(NotificationOnFirstRun::class.java)
         if (!service.state.isFirstRun) {
             return
         }
