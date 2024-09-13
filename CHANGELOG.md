@@ -7,7 +7,10 @@
 ## [1.0.52]
 replace deprecated  methods
 
-## [1.0.49]
+
+## [1.0.51]
+add sod schema support
+
 
 ## [1.0.48]
 
