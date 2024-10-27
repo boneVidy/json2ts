@@ -1,6 +1,7 @@
 package com.json2ts.state
 
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
@@ -20,6 +21,12 @@ class NotificationOnFirstRun : PersistentStateComponent<NotificationOnFirstRun.S
 
     override fun loadState(state: State) {
         this.state = state
+    }
+
+    companion object {
+        fun getInstance(): NotificationOnFirstRun {
+            return ApplicationManager.getApplication().getService(NotificationOnFirstRun::class.java)
+        }
     }
 
 

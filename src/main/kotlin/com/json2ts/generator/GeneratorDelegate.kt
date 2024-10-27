@@ -11,7 +11,7 @@ import com.json2ts.parser.typescript.ParseType
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 
-class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDelegate()) {
+class GeneratorDelegate() {
     @Suppress("TooGenericExceptionCaught")
     fun runGeneration(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(
@@ -22,11 +22,13 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
                     try {
                         val generator = TsGenerator()
                         generator.generateFromJsonByDocument(json, event, rootName, parseType)
-                        messageDelegate.showMessage("Ts interface has been generated")
+                        event.project?.let { Notifier.notify("Successfully generated a typescript type", it) }
                     } catch (e: Exception) {
-                        when (e) {
-                            is IOException -> messageDelegate.catchException(FileIOException())
-                            else -> messageDelegate.catchException(e)
+                        event.project?.let {
+                            when (e) {
+                                is IOException -> Notifier.notifyException(FileIOException(), it)
+                                else -> Notifier.notifyException(e, it)
+                            }
                         }
                     } finally {
                         indicator.stop()
@@ -37,6 +39,7 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
             }
         )
     }
+
     @Suppress("TooGenericExceptionCaught")
     fun runGenerationToFile(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(
@@ -47,11 +50,13 @@ class GeneratorDelegate(private val messageDelegate: MessageDelegate = MessageDe
                     try {
                         val generator = TsGenerator()
                         generator.generateTsFile(json, event, rootName, parseType)
-                        messageDelegate.showMessage("Ts interface has been generated")
+                        event.project?.let { Notifier.notify("Ts interface has been generated", it) }
                     } catch (e: Throwable) {
-                        when (e) {
-                            is IOException -> messageDelegate.catchException(FileIOException())
-                            else -> messageDelegate.catchException(e)
+                        event.project?.let {
+                            when (e) {
+                                is IOException -> Notifier.notifyException(FileIOException(), it)
+                                else -> Notifier.notifyException(e, it)
+                            }
                         }
                     } finally {
                         indicator.stop()

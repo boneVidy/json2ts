@@ -1,9 +1,14 @@
 package com.json2ts.actions
 
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonParseException
+import com.google.gson.JsonParser
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.DialogBuilder
 import com.json2ts.generator.GeneratorDelegate
+import com.json2ts.generator.Notifier
 import com.json2ts.parser.typescript.ParseType
 import com.json2ts.views.Json2TsForm
 
@@ -19,6 +24,19 @@ class Json2ts : AnAction() {
                         generatorDelegate.runGeneration(event, json, rootName, parseType)
                     }
                 })
+                setOnFormatListener(object : Json2TsForm.OnFormatClicked {
+                    override fun format(json: String): String {
+                        val jsonString = try {
+                            val rootJsonElement = JsonParser.parseString(json)
+                            val gson = GsonBuilder().setPrettyPrinting().create()
+                            gson.toJson(rootJsonElement)
+                        } catch (e: JsonParseException) {
+                            Notifier.notifyException(e, event.project!!)
+                            null
+                        }
+                        return jsonString ?: json
+                    }
+                })
             }
             setCenterPanel(form.rootView)
             setTitle("Json2Ts")
@@ -29,5 +47,9 @@ class Json2ts : AnAction() {
 
     override fun update(e: AnActionEvent) {
         e.presentation.isEnabled = true
+    }
+
+    override fun getActionUpdateThread(): ActionUpdateThread {
+        return ActionUpdateThread.EDT
     }
 }

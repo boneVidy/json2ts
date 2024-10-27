@@ -37,6 +37,18 @@
 <!--    <depends>JavaScript</depends>-->
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <notificationGroup id="Json2ts info"
+                           displayType="BALLOON"
+                           key="Json2ts.info"/>
+        <notificationGroup id="Json2ts toast"
+                           displayType="BALLOON"
+                           key="Json2ts.toast"/>
+        <notificationGroup id="Json2ts error"
+                           displayType="BALLOON"
+                           key="Json2ts.error"/>
+
+        <applicationService serviceImplementation="com.json2ts.state.NotificationOnFirstRun"/>
+        <postStartupActivity implementation="com.json2ts.activity.StartupActivity"/>
     </extensions>
     <actions>
         <!-- Add your actions here -->

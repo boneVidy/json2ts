@@ -4,10 +4,11 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonParseException
 import com.google.gson.JsonParser
 import com.intellij.ide.BrowserUtil
+import com.intellij.openapi.project.Project
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
-import com.json2ts.generator.MessageDelegate
+import com.json2ts.generator.Notifier
 import com.json2ts.parser.typescript.ParseType
 import java.awt.Dimension
 import java.awt.Insets
@@ -34,19 +35,15 @@ class Json2TsForm {
     lateinit var zodRadio: JRadioButton
     private lateinit var buttonGroup: ButtonGroup
     lateinit var formatJsonBtn: JButton
-    private var listener: OnGenerateClicked? = null
+    private var onGenerateClicked: OnGenerateClicked? = null
+    private var onFormatClicked: OnFormatClicked? = null
+
     fun setFormatHandle() {
         formatJsonBtn.addActionListener {
             val text = editor.text
-            text.let {
-                val jsonString = try {
-                    val rootJsonElement = JsonParser.parseString(text)
-                    val gson = GsonBuilder().setPrettyPrinting().create()
-                    gson.toJson(rootJsonElement)
-                } catch (e: JsonParseException) {
-                    MessageDelegate().catchException(e)
-                }
-                editor.text = jsonString as String
+            val formatJson = onFormatClicked?.format(text)
+            formatJson.let {
+                editor.text = it ?: text
             }
         }
     }
@@ -55,8 +52,11 @@ class Json2TsForm {
             BrowserUtil.browse("https://github.com/boneVidy/json2ts")
         }
     }
+    fun setOnFormatListener(listener: OnFormatClicked) {
+        this.onFormatClicked = listener
+    }
     fun setOnGenerateListener(listener: OnGenerateClicked) {
-        this.listener = listener
+        this.onGenerateClicked = listener
         interfaceRadio.isSelected = true
         val radioList = listOf(interfaceRadio, jsDocRadio, typeRadio, classRadio, zodRadio)
         radioList.forEach {
@@ -80,7 +80,7 @@ class Json2TsForm {
                 val rootName = if (rootObjectName.text != "") {
                     rootObjectName.text
                 } else "RootObject"
-                this.listener?.onClicked(
+                this.onGenerateClicked?.onClicked(
                     rootName,
                     editor.text,
                     parseType
@@ -218,5 +218,9 @@ class Json2TsForm {
 
     interface OnGenerateClicked {
         fun onClicked(rootName: String, json: String, parseType: ParseType)
+    }
+
+    interface OnFormatClicked {
+        fun format(json: String): String
     }
 }
