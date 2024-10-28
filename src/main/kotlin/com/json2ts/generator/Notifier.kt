@@ -36,7 +36,7 @@ object Notifier {
         }
     }
 
-    fun notifyWithHyperlink(project: Project,) {
+    fun notifyWithHyperlink(project: Project) {
         ApplicationManager.getApplication().invokeLater {
             NotificationGroupManager.getInstance()
                 .getNotificationGroup(INFO_GROUP)

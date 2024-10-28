@@ -71,13 +71,15 @@ class TsTransformer
             }
         }
         if (tsParseType == ParseType.TSClass) {
-            set.forEachIndexed { index, entry ->
+            set.forEachIndexed { _, entry ->
                 val (entryKey, type) = getKeyAndType(entry, key)
                 // make filed uppercase first char and do not use replaceFirstChar api
-                val fistChar = entryKey[0].toUpperCase()
+                val fistChar = entryKey[0].uppercaseChar()
                 val uppercaseFirstEntry = fistChar + entryKey.substring(1)
                 code +=
-                    "\n\tpublic set${uppercaseFirstEntry} ($entryKey: $type) {\n\t\tthis.${entryKey} = $entryKey;\n\t}\n\tpublic get${uppercaseFirstEntry} () {\n\t\treturn this.$entryKey;\n\t}"
+                    "\n\tpublic set${uppercaseFirstEntry} ($entryKey: $type) {\n" +
+                            "\t\tthis.${entryKey} = $entryKey;\n\t}\n" +
+                            "\tpublic get${uppercaseFirstEntry} () {\n\t\treturn this.$entryKey;\n\t}"
             }
 
         }
