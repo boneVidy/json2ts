@@ -51,5 +51,5 @@ open class TsPrimitiveConverter : JsonTraver {
         }
     }
 
-    private fun uppercaseFirstChar(key: String): String = key[0].toUpperCase() + key.substring(1, key.length)
+    private fun uppercaseFirstChar(key: String): String = key[0].uppercaseChar() + key.substring(1, key.length)
 }

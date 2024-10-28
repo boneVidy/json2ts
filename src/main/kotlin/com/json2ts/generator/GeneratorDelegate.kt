@@ -11,7 +11,7 @@ import com.json2ts.parser.typescript.ParseType
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 
-class GeneratorDelegate() {
+class GeneratorDelegate {
     @Suppress("TooGenericExceptionCaught")
     fun runGeneration(event: AnActionEvent, json: String, rootName: String = "RootObject", parseType: ParseType) {
         ProgressManager.getInstance().run(

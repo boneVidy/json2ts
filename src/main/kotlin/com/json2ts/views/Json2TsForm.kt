@@ -1,24 +1,20 @@
 package com.json2ts.views
 
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParseException
-import com.google.gson.JsonParser
 import com.intellij.ide.BrowserUtil
-import com.intellij.openapi.project.Project
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.uiDesigner.core.GridConstraints
 import com.intellij.uiDesigner.core.GridLayoutManager
-import com.json2ts.generator.Notifier
+import com.intellij.util.ui.JBUI
 import com.json2ts.parser.typescript.ParseType
 import java.awt.Dimension
-import java.awt.Insets
-import javax.swing.ButtonGroup
 import javax.swing.JButton
-import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JPanel
-import javax.swing.JRadioButton
 import javax.swing.JTextField
+import javax.swing.JRadioButton
+import javax.swing.ButtonGroup
+import javax.swing.JComponent
+
 
 @Suppress("MagicNumber")
 class Json2TsForm {
@@ -38,7 +34,7 @@ class Json2TsForm {
     private var onGenerateClicked: OnGenerateClicked? = null
     private var onFormatClicked: OnFormatClicked? = null
 
-    fun setFormatHandle() {
+    private fun setFormatHandle() {
         formatJsonBtn.addActionListener {
             val text = editor.text
             val formatJson = onFormatClicked?.format(text)
@@ -47,7 +43,7 @@ class Json2TsForm {
             }
         }
     }
-    fun setStarHandle() {
+    private fun setStarHandle() {
         starButton.addActionListener {
             BrowserUtil.browse("https://github.com/boneVidy/json2ts")
         }
@@ -112,11 +108,11 @@ class Json2TsForm {
      * DO NOT edit this method OR call it in your code!
      * @noinspection ALL
      */
-    @Suppress("LongMethod")
+    @Suppress("LongMethod","FunctionName")
     private fun `$$$setupUI$$$`() {
         createUIComponents()
         rootView = JPanel()
-        rootView.layout = GridLayoutManager(2, 4, Insets(0, 0, 0, 0), -1, -1)
+        rootView.layout = GridLayoutManager(2, 4, JBUI.emptyInsets(), -1, -1)
         rootView.preferredSize = Dimension(500, 500)
         val scrollPane1 = JBScrollPane()
         rootView.add(
@@ -212,6 +208,7 @@ class Json2TsForm {
     /**
      * @noinspection ALL
      */
+    @Suppress("FunctionName")
     fun `$$$getRootComponent$$$`(): JComponent {
         return rootView
     }
