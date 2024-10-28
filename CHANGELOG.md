@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 
-## [1.0.49]
-add zod schema support
+
+## [1.0.51]
+add sod schema support
+
 
 ## [1.0.48]
 
